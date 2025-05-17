@@ -6,7 +6,7 @@ kernel - manages resources, connects software and hardware, I/O, device drivers
 
 https://wiki.osdev.org/Assembly
 
-.iso file. disk image??
+QEMU wants a .iso file (disk image)
 
 gcc links everything together and builds a binary
 
