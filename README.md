@@ -6,9 +6,9 @@ kernel - manages resources, connects software and hardware, I/O, device drivers
 
 https://wiki.osdev.org/Assembly
 
-gotta link stuff together idk
+gcc links everything together and builds a binary
 
-- [startup/entrypoint script](https://github.com/memtest86plus/memtest86plus/blob/main/boot/x86/startup64.S) written in assembly (.S) that sets up the stack (and maybe some other stuff) and calls the C main function.
+- [bootloader](https://github.com/memtest86plus/memtest86plus/blob/main/boot/x86/startup64.S) written in assembly (.S) that sets up the stack (and maybe some other stuff) and calls the C main function. startup/entrypoint
 - [C code](https://github.com/memtest86plus/memtest86plus/blob/main/app/main.c)!!
 
 https://cstdspace.quora.com/How-to-start-making-a-simple-operating-system-in-C
