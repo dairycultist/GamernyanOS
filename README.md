@@ -1,6 +1,14 @@
-# GamernyanOS
+# GamernyanOS (stupid working title)
 
-Find one specific (popular) architecture that I can emulated with [QEMU](https://www.qemu.org/) and focus on that. First goal: Run assembly code that outputs _something_.
+I'm gonna be working with the [AVR architecture](https://en.wikipedia.org/wiki/Atmel_AVR_instruction_set), cuz it's easily emulated with QEMU, has a simple instruction set, and is used by Arduinos (which are easy to get your hands on).
+
+First goal: Run assembly code that outputs _something_.
+
+`brew install qemu` install [QEMU](https://www.qemu.org/) emulator
+
+`qemu-system-avr -machine help` see machines that run AVR architecture with qemu
+
+https://dmitry.gr/?r=05.Projects&proj=07.%20Linux%20on%208bit
 
 kernel - manages resources, connects software and hardware, I/O, device drivers
 
