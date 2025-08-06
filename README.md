@@ -8,6 +8,8 @@ First goal: Run assembly code that outputs _something_.
 
 `qemu-system-avr -machine help` see machines that run AVR architecture with qemu
 
+https://qemu-project.gitlab.io/qemu/system/target-avr.html
+
 https://dmitry.gr/?r=05.Projects&proj=07.%20Linux%20on%208bit
 
 kernel - manages resources, connects software and hardware, I/O, device drivers
