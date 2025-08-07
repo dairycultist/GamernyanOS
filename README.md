@@ -12,9 +12,9 @@ I'm gonna be working with the [AVR architecture](https://en.wikipedia.org/wiki/A
 
 ### Compiling and running
 
-`avr-gcc -mmcu=atmega328p -Os -o test.elf test.c` compile C code to AVR gcc
-
-`qemu-system-avr -machine uno -bios test.elf -display none -serial stdio` run test.elf (not using -nographic because then you can't terminate the session for some reason)
+1. `avr-gcc -mmcu=atmega328p -Os -o test.elf test.c` compile C code to AVR gcc
+- - `-Os` tells the compiler to optimize for code size
+2. `qemu-system-avr -machine uno -bios test.elf -display none -serial stdio` run test.elf (not using -nographic because then you can't terminate the session for some reason)
 
 > [!TIP]
 > Run `qemu-system-avr -machine help` to see QEMU-provided machines that run AVR architecture (`atmega328p` is aliased as `uno`).
