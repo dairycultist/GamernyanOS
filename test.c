@@ -1,6 +1,6 @@
 #include <avr/io.h>
 
-#define F_CPU 16000000UL // CPU frequency (can also be done with -DF_CPU=16000000UL commandline argument to avr-gcc)
+#define F_CPU 16000000UL
 #define BAUD 9600
 #define BAUD_RATE ((F_CPU / (16UL * BAUD)) - 1)
 
