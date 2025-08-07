@@ -1,40 +1,48 @@
-// google gemini gave me this code lol
-
 #include <avr/io.h>
-#define F_CPU 16000000UL // Define CPU frequency, can also be done with -DF_CPU=16000000UL commandline argument to avr-gcc
+
+#define F_CPU 16000000UL // CPU frequency (can also be done with -DF_CPU=16000000UL commandline argument to avr-gcc)
 #define BAUD 9600
-#define UBRR_VALUE ((F_CPU / (16UL * BAUD)) - 1)
+#define BAUD_RATE ((F_CPU / (16UL * BAUD)) - 1)
 
-void UART_init(void) {
+typedef unsigned char byte;
 
-    // Set baud rate
-    UBRR0H = (unsigned char) (UBRR_VALUE >> 8);
-    UBRR0L = (unsigned char) UBRR_VALUE;
+void uart_putchar(byte data) {
 
-    // Enable receiver and transmitter
-    UCSR0B = (1 << RXEN0) | (1 << TXEN0);
+    // wait for empty register
+    while (!(UCSR0A & _BV(UDRE0)));
 
-    // Set frame format: 8 data bits, 1 stop bit, no parity
-    UCSR0C = (3 << UCSZ00); // UCSZ00 and UCSZ01 bits for 8 data bits
-}
-
-void UART_transmit(unsigned char data) {
-    // Wait for empty transmit buffer
-    while (!(UCSR0A & (1 << UDRE0)));
-
-    // Put data into buffer (register UDR0), queuing it for transmission
+    // put data into register (queuing it for transmission)
     UDR0 = data;
 }
 
-int main(void) {
-    UART_init();
+byte uart_getchar() {
 
-	UART_transmit('H');
-	UART_transmit('e');
-	UART_transmit('l');
-	UART_transmit('l');
-	UART_transmit('o');
-	UART_transmit('\n');
+	// wait until data exists
+	while (!(UCSR0A & _BV(RXC0)));
+
+	// return data
+    return UDR0;
+}
+
+int main() {
+
+	// initialize UART (serial communication)
+    UBRR0H = (byte) (BAUD_RATE >> 8);
+    UBRR0L = (byte) BAUD_RATE;
+
+	UCSR0C = _BV(UCSZ01) | _BV(UCSZ00); /* set frame format: 8 data bits, 1 stop bit, no parity */
+    UCSR0B = _BV(RXEN0) | _BV(TXEN0);   /* enable receiver (RX) and transmitter (TX) */
+
+	uart_putchar('H');
+	uart_putchar('e');
+	uart_putchar('l');
+	uart_putchar('l');
+	uart_putchar('o');
+	uart_putchar('\n');
+
+	while (1) {
+		uart_putchar(uart_getchar());
+	}
 
     return 0;
 }
