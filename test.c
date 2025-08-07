@@ -8,29 +8,20 @@ typedef unsigned char byte;
 
 void uart_putbyte(byte data) {
 
-    // wait for empty register
-    while (!(UCSR0A & _BV(UDRE0)));
-
-    // put data into register (queuing it for transmission)
-    UDR0 = data;
+    while (!(UCSR0A & _BV(UDRE0)));	// wait for empty register
+    UDR0 = data;					// put data into register (queuing it for transmission)
 }
 
 void uart_putstring(byte *data) {
 
-	while (*data) {
-
-		uart_putbyte(*data);
-		data++;
-	}
+	while (*data)
+		uart_putbyte(*data++);
 }
 
 byte uart_getbyte() {
 
-	// wait until data exists
-	while (!(UCSR0A & _BV(RXC0)));
-
-	// return data
-    return UDR0;
+	while (!(UCSR0A & _BV(RXC0)));	// wait until data exists
+    return UDR0;					// return data
 }
 
 int main() {
@@ -39,8 +30,8 @@ int main() {
     UBRR0H = (byte) (BAUD_RATE >> 8);
     UBRR0L = (byte) BAUD_RATE;
 
-	UCSR0C = _BV(UCSZ01) | _BV(UCSZ00); /* set frame format: 8 data bits, 1 stop bit, no parity */
-    UCSR0B = _BV(RXEN0) | _BV(TXEN0);   /* enable receiver (RX) and transmitter (TX) */
+	UCSR0C = _BV(UCSZ01) | _BV(UCSZ00); // set frame format: 8 data bits, 1 stop bit, no parity
+    UCSR0B = _BV(RXEN0) | _BV(TXEN0);   // enable receiver (RX) and transmitter (TX)
 
 	// CLI
 	byte buffer[256] = {0};
