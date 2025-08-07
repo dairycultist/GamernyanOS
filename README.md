@@ -2,6 +2,10 @@
 
 I'm gonna be working with the [AVR architecture](https://en.wikipedia.org/wiki/Atmel_AVR_instruction_set), cuz I've used it before, it's easily emulated with QEMU, has a simple instruction set, and is used by Arduinos (which are easy to get your hands on).
 
+## Features
+
+- Read from and write to serial connection
+
 ## Run
 
 ### Prerequisites
