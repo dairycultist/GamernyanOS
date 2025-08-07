@@ -42,10 +42,38 @@ int main() {
 	UCSR0C = _BV(UCSZ01) | _BV(UCSZ00); /* set frame format: 8 data bits, 1 stop bit, no parity */
     UCSR0B = _BV(RXEN0) | _BV(TXEN0);   /* enable receiver (RX) and transmitter (TX) */
 
-	uart_putstring("hello world");
+	byte buffer[256] = {0};
+	int cursor = 0;
+	byte in;
+
+	uart_putstring("> ");
 
 	while (1) {
-		uart_putbyte(uart_getbyte());
+
+		in = uart_getbyte();
+
+		if (in == 127) { // delete
+
+			buffer[--cursor] = '\0';
+			uart_putstring("\b \b");
+
+		} else if (in == '\r') { // enter
+
+			uart_putbyte('\n');
+			uart_putstring(buffer);
+			uart_putstring("\n> ");
+
+			while (cursor) {
+				buffer[--cursor] = '\0';
+			}
+
+		} else {
+
+			buffer[cursor++] = in;
+			uart_putbyte(in);
+		}
+
+		// up down left right are ansii escape codes [cA - [cD
 	}
 
     return 0;
