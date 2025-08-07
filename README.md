@@ -4,11 +4,15 @@ I'm gonna be working with the [AVR architecture](https://en.wikipedia.org/wiki/A
 
 ## Run
 
+### Prerequisites
+
 `brew tap osx-cross/avr && brew install avr-gcc` install AVR-GCC
 
-`avr-gcc -mmcu=atmega328p -Os -DF_CPU=16000000UL -o blink.elf blink.c` compile C code to AVR gcc
-
 `brew install qemu` install [QEMU](https://www.qemu.org/) emulator
+
+### Compiling and running
+
+`avr-gcc -mmcu=atmega328p -Os -DF_CPU=16000000UL -o blink.elf blink.c` compile C code to AVR gcc
 
 `qemu-system-avr -machine help` see machines that run AVR architecture with qemu (uno is atmega328p)
 
