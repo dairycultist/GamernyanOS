@@ -12,7 +12,7 @@ First goal: Run assembly code that outputs _something_.
 
 `qemu-system-avr -machine help` see machines that run AVR architecture with qemu (uno is atmega328p)
 
-`qemu-system-avr -machine uno -bios test.elf` run test.elf
+`qemu-system-avr -machine uno -bios test.elf -display none -serial stdio` run test.elf (not using -nographic because then you can't terminate the session for some reason)
 
 https://qemu-project.gitlab.io/qemu/system/target-avr.html
 
