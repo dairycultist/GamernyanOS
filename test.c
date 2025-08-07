@@ -1,7 +1,7 @@
 // google gemini gave me this code lol
 
 #include <avr/io.h>
-#define F_CPU 16000000UL // Define CPU frequency
+#define F_CPU 16000000UL // Define CPU frequency, can also be done with -DF_CPU=16000000UL commandline argument to avr-gcc
 #define BAUD 9600
 #define UBRR_VALUE ((F_CPU / (16UL * BAUD)) - 1)
 
