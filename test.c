@@ -6,7 +6,7 @@
 
 typedef unsigned char byte;
 
-void uart_putchar(byte data) {
+void uart_putbyte(byte data) {
 
     // wait for empty register
     while (!(UCSR0A & _BV(UDRE0)));
@@ -15,7 +15,16 @@ void uart_putchar(byte data) {
     UDR0 = data;
 }
 
-byte uart_getchar() {
+void uart_putstring(byte *data) {
+
+	while (*data) {
+
+		uart_putbyte(*data);
+		data++;
+	}
+}
+
+byte uart_getbyte() {
 
 	// wait until data exists
 	while (!(UCSR0A & _BV(RXC0)));
@@ -33,15 +42,10 @@ int main() {
 	UCSR0C = _BV(UCSZ01) | _BV(UCSZ00); /* set frame format: 8 data bits, 1 stop bit, no parity */
     UCSR0B = _BV(RXEN0) | _BV(TXEN0);   /* enable receiver (RX) and transmitter (TX) */
 
-	uart_putchar('H');
-	uart_putchar('e');
-	uart_putchar('l');
-	uart_putchar('l');
-	uart_putchar('o');
-	uart_putchar('\n');
+	uart_putstring("hello world");
 
 	while (1) {
-		uart_putchar(uart_getchar());
+		uart_putbyte(uart_getbyte());
 	}
 
     return 0;
