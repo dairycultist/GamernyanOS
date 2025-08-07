@@ -1,8 +1,12 @@
 # GamernyanOS (stupid working title)
 
-I'm gonna be working with the [AVR architecture](https://en.wikipedia.org/wiki/Atmel_AVR_instruction_set), cuz it's easily emulated with QEMU, has a simple instruction set, and is used by Arduinos (which are easy to get your hands on).
+I'm gonna be working with the [AVR architecture](https://en.wikipedia.org/wiki/Atmel_AVR_instruction_set), cuz I've used it before, it's easily emulated with QEMU, has a simple instruction set, and is used by Arduinos (which are easy to get your hands on).
 
 First goal: Run assembly code that outputs _something_.
+
+`brew tap osx-cross/avr && brew install avr-gcc` install AVR-GCC
+
+`avr-gcc -mmcu=atmega328p -Os -DF_CPU=16000000UL -o blink.elf blink.c` compile C code to AVR gcc
 
 `brew install qemu` install [QEMU](https://www.qemu.org/) emulator
 
