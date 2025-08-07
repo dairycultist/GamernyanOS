@@ -28,17 +28,14 @@ I'm gonna be working with the [AVR architecture](https://en.wikipedia.org/wiki/A
 
 ## References
 
+An OS is built from a .iso file (disk image), but I currently only have a .elf (executable). [learning how a computer interprets a .iso is gonna be a thing I need to do](https://stackoverflow.com/questions/59593720/how-to-make-a-bootable-disc-iso-that-loads-a-kernel-elf)
+
+bootloader written in assembly (.S) that sets up the stack (and maybe some other stuff) and calls the C main function. startup/entrypoint
+
 https://qemu-project.gitlab.io/qemu/system/target-avr.html
 
 https://dmitry.gr/?r=05.Projects&proj=07.%20Linux%20on%208bit
 
 kernel - manages resources, connects software and hardware, I/O, device drivers
-
-QEMU wants a .iso file (disk image)
-
-gcc links everything together and builds a binary
-
-- [bootloader](https://github.com/memtest86plus/memtest86plus/blob/main/boot/x86/startup64.S) written in assembly (.S) that sets up the stack (and maybe some other stuff) and calls the C main function. startup/entrypoint
-- [C code](https://github.com/memtest86plus/memtest86plus/blob/main/app/main.c)!!
 
 https://cstdspace.quora.com/How-to-start-making-a-simple-operating-system-in-C
