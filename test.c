@@ -42,6 +42,7 @@ int main() {
 	UCSR0C = _BV(UCSZ01) | _BV(UCSZ00); /* set frame format: 8 data bits, 1 stop bit, no parity */
     UCSR0B = _BV(RXEN0) | _BV(TXEN0);   /* enable receiver (RX) and transmitter (TX) */
 
+	// CLI
 	byte buffer[256] = {0};
 	int cursor = 0;
 	byte in;
@@ -54,8 +55,10 @@ int main() {
 
 		if (in == 127) { // delete
 
-			buffer[--cursor] = '\0';
-			uart_putstring("\b \b");
+			if (cursor) {
+				buffer[--cursor] = '\0';
+				uart_putstring("\b \b");
+			}
 
 		} else if (in == '\r') { // enter
 
@@ -67,13 +70,16 @@ int main() {
 				buffer[--cursor] = '\0';
 			}
 
+		} else if (in == 27) { // ansii escape codes
+
+			// cursor up down left right are \[cA - \[cD
+			uart_putbyte('\\');
+
 		} else {
 
 			buffer[cursor++] = in;
 			uart_putbyte(in);
 		}
-
-		// up down left right are ansii escape codes [cA - [cD
 	}
 
     return 0;
