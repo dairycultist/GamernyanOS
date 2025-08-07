@@ -4,7 +4,9 @@ I'm gonna be working with the [AVR architecture](https://en.wikipedia.org/wiki/A
 
 ## Features
 
-- Read from and write to serial connection
+- Reading from and writing to serial connection (via [UART](https://www.appelsiini.net/2011/simple-usart-with-avr-libc/))
+- (TODO) Simple shell commands (and code separation...)
+- (TODO) Non-volatile file system
 
 ## Run
 
@@ -30,11 +32,7 @@ https://qemu-project.gitlab.io/qemu/system/target-avr.html
 
 https://dmitry.gr/?r=05.Projects&proj=07.%20Linux%20on%208bit
 
-[serial communication with USART](https://www.appelsiini.net/2011/simple-usart-with-avr-libc/)
-
 kernel - manages resources, connects software and hardware, I/O, device drivers
-
-https://wiki.osdev.org/Assembly
 
 QEMU wants a .iso file (disk image)
 
