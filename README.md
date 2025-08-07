@@ -10,7 +10,9 @@ First goal: Run assembly code that outputs _something_.
 
 `brew install qemu` install [QEMU](https://www.qemu.org/) emulator
 
-`qemu-system-avr -machine help` see machines that run AVR architecture with qemu
+`qemu-system-avr -machine help` see machines that run AVR architecture with qemu (uno is atmega328p)
+
+`qemu-system-avr -machine uno -bios test.elf` run test.elf
 
 https://qemu-project.gitlab.io/qemu/system/target-avr.html
 
