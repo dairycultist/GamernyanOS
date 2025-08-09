@@ -8,7 +8,7 @@ either I make the lamest general purpose OS imagineable or make a "gaming OS" li
 
 - Reading from and writing to serial connection (via [UART](https://www.appelsiini.net/2011/simple-usart-with-avr-libc/))
 - (TODO) Simple shell commands (and code separation...)
-- (TODO) Non-volatile file system (Arduino write to memory in raw sd card since Arduino doesn't come with a filesystem/\<stdio.h> implementation)
+- (TODO) Custom non-volatile file system (Arduino write to memory in raw sd card since Arduino doesn't come with a filesystem/\<stdio.h> implementation)
 
 ## Run
 
@@ -41,6 +41,17 @@ qemu-system-avr -machine uno -bios test.elf -display none -serial stdio
 > Run `qemu-system-avr -machine help` to see QEMU-provided machines that run AVR architecture (`atmega328p` is aliased as `uno`).
 
 ## References
+
+SD cards are block-addressed, meaning data is written and read in fixed-size blocks (typically 512 bytes), as opposed to arbitrary addresses. You must send specific commands to the SD card to initialize it, select the desired block address, and then send the data for writing. These commands are part of the SD card's SPI or SDIO interface protocol. This is __raw data__, any filesystem implementation (for creating and locating allocations) must be done yourself
+
+```
+Initialize the SD card: Send the necessary commands (e.g., CMD0, CMD8, CMD55, ACMD41) to put the SD card into SPI mode and initialize it for operation.
+Select the block address: Send a command to specify the starting block address where you want to write your data.
+Send the write command: Send the appropriate command for single-block or multi-block write operations.
+Transmit the data: Send the raw data in 512-byte blocks to the SD card.
+Handle CRC: If enabled, ensure correct CRC calculations and handling for data integrity.
+Wait for completion: Monitor the SD card's status to confirm the write operation has completed.
+```
 
 QEMU provides support for emulating SD card controllers and attaching images to represent the SD card's storage (a peripheral of an arduino) `qemu-img create -f raw sdcard.img 256K` and add `-drive file=sdcard.img,format=raw` to the run command
 
