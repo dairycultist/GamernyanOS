@@ -27,10 +27,16 @@ brew install qemu
 avr-gcc -mmcu=atmega328p -Os -o main.elf main.c
 ```
 
-2. Run `test.elf` in a virtual environment (not using `-nographic` because then you can't terminate the session for some reason).
+2. Create memory backend to store program RAM in.
+
+```qemu-img create -f raw sdcard.img 256K```
+
+3. Run `test.elf` in a virtual environment (not using `-nographic` because then you can't terminate the session for some reason).
 
 ```
-qemu-system-avr -machine uno -bios main.elf -display none -serial stdio
+qemu-system-avr -bios main.elf -display none -serial stdio \
+-object memory-backend-file,id=pc.ram,size=256K,mem-path=sdcard.img,prealloc=on,share=on \
+-machine uno,memory-backend=pc.ram -m 256K
 ```
 
 > [!TIP]
@@ -53,8 +59,6 @@ bootloader written in assembly (.S) that sets up the stack (and maybe some other
 kernel - manages resources, connects software and hardware, I/O, device drivers
 
 `-DF_CPU=16000000UL` may be added to avr-gcc command to define CPU frequency if omitting `#define F_CPU 16000000UL` from script
-
-`qemu-img create -f raw sdcard.img 256K` Create virtual SD card image (which will be a peripheral and the storage of our emulated machine).
 
 `-device sd-card,drive=my_sdcard -drive id=my_sdcard,if=sd,format=raw,file=sdcard.img` Tell QEMU to emulate an SD card controller and attach our SD card image: Add SD card image as a virtual _drive_, which is referenced by a virtual _device_ (the SD card controller).
 
