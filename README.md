@@ -14,16 +14,26 @@ either I make the lamest general purpose OS imagineable or make a "gaming OS" li
 
 ### Prerequisites
 
-`brew tap osx-cross/avr && brew install avr-gcc` install AVR-GCC
+Install AVR-GCC and [QEMU](https://www.qemu.org/) emulator.
 
-`brew install qemu` install [QEMU](https://www.qemu.org/) emulator
+```
+brew tap osx-cross/avr && brew install avr-gcc
+brew install qemu
+```
 
 ### Compiling and running
 
-1. `avr-gcc -mmcu=atmega328p -Os -o test.elf test.c` compile C code to AVR gcc
-- - `-Os` tells the compiler to optimize for code size
-  - `-DF_CPU=16000000UL` may be added to define CPU frequency if omitting `#define F_CPU 16000000UL` from script
-2. `qemu-system-avr -machine uno -bios test.elf -display none -serial stdio` run test.elf (not using -nographic because then you can't terminate the session for some reason)
+1. Compile C code to AVR assembly. `-Os` tells the compiler to optimize for code size.
+
+```
+`avr-gcc -mmcu=atmega328p -Os -o test.elf test.c`
+```
+
+2. Run `test.elf` in a virtual environment. (not using -nographic because then you can't terminate the session for some reason)
+
+```
+qemu-system-avr -machine uno -bios test.elf -display none -serial stdio
+```
 
 > [!TIP]
 > Run `qemu-system-avr -machine help` to see QEMU-provided machines that run AVR architecture (`atmega328p` is aliased as `uno`).
@@ -50,11 +60,13 @@ QEMU provides support for emulating SD card controllers and attaching images to 
     file=sdcard.img: This defines the file on your host system that serves as the backing store for the virtual SD card. This file will store all data written to the emulated SD card, providing the persistence you're looking for
 ```
 
-Arduinos (what I'm programming for) don't really have software, they have modifiable firmware. This means my OS isn't a piece of software started up by the BIOS (firmware), it IS the BIOS. So I guess I don't have to think of .iso images, boot sectors/bootloaders, or whatever...
+Arduinos (what I'm programming for, 8-bit AVR microcontrollers) don't really have software, they have modifiable firmware. This means my OS isn't a piece of software started up by the BIOS (firmware), it IS the BIOS. So I guess I don't have to think of .iso images, boot sectors/bootloaders, or whatever...
 
 bootloader written in assembly (.S) that sets up the stack (and maybe some other stuff) and calls the C main function. startup/entrypoint
 
 kernel - manages resources, connects software and hardware, I/O, device drivers
+
+`-DF_CPU=16000000UL` may be added to avr-gcc command to define CPU frequency if omitting `#define F_CPU 16000000UL` from script
 
 https://qemu-project.gitlab.io/qemu/system/target-avr.html
 
