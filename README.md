@@ -75,7 +75,7 @@ https://dmitry.gr/?r=05.Projects&proj=07.%20Linux%20on%208bit
 
 https://cstdspace.quora.com/How-to-start-making-a-simple-operating-system-in-C
 
-Computer starts. The BIOS, a piece of hardware-specific firmware (burnt into the hardware), initializes and tests hardware components, and provides hardware-abstracted services to the OS for boot-time hardware initialization, including establishing I/O and disk access. This differs from a Hardware Abstraction Layer (HAL), which is bundled with the OS for the target hardware and provides advanced hardware-abstracted services the OS demands.
+Computer starts. The BIOS, a piece of hardware-specific firmware (burnt into the hardware), initializes and tests hardware components, and provides hardware-abstracted services to the OS for boot-time hardware initialization, including establishing I/O and disk access. This differs from a Hardware Abstraction Layer (HAL), which is compiled together with the (hardware-agnostic) OS logic for the target hardware and provides advanced hardware-abstracted services the OS demands.
 
 **OS image** - a snapshot of a computer's entire storage.
 
