@@ -2,6 +2,7 @@
 
 typedef unsigned char byte;
 
+#include "storage.c"
 #include "uart.c"
 
 int main() {
