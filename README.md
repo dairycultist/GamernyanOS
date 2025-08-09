@@ -77,6 +77,6 @@ https://cstdspace.quora.com/How-to-start-making-a-simple-operating-system-in-C
 
 **OS image** - a snapshot of a computer's entire storage.
 
-**Boot sector** - The very beginning of the OS image, and the part of memory the computer reads first to set up functionality. Contains the **bootloader**, assembly code (.S) that sets up the stack and calls the C main function.
+**Boot sector** - The very beginning of the OS image, and the part of memory the computer reads first to set up functionality. Contains the **bootloader**, assembly code (.S) that sets up the stack and calls the C main function of the **kernel**.
 
-**Kernel** - Executes programs, manages resources (memory allocations, file pointers) and connects software and hardware (I/O, peripherals/device drivers).
+**Kernel** - The root program that executes all other programs, manages their resources (memory allocations, file pointers), and connects software and hardware (I/O, peripherals/device drivers).
