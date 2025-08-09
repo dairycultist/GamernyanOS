@@ -6,13 +6,13 @@ either I make the lamest general purpose OS imagineable or make a "gaming OS" li
 
 - Reading from and writing to hardware serial connection with UART
 - (TODO) Simple shell commands
-- (TODO) Reading from and writing to non-volatile storage. `qemu-system-avr` unfortunately doesn't support SD card controller emulation right now, so everything is stored in onboard flash memory.
+- (TODO) Reading from and writing to non-volatile storage (debating between SD card vs. onboard flash memory)
 
 ## Run
 
 ### Prerequisites
 
-Install AVR-GCC and [QEMU](https://www.qemu.org/) emulator.
+Install AVR-GCC and [QEMU](https://www.qemu.org/) emulator (will look into [Microchip Studio](https://www.microchip.com/en-us/tools-resources/develop/microchip-studio) for AVR emulation given the limitations QEMU has with AVR).
 
 ```
 brew tap osx-cross/avr && brew install avr-gcc
@@ -37,8 +37,6 @@ qemu-system-avr -bios main.elf -display none -serial stdio
 > Run `qemu-system-avr -machine help` to see QEMU-provided machines that run AVR architecture (`atmega328p` is aliased as `uno`).
 
 ## Notes
-
-might look into [Microchip Studio](https://www.microchip.com/en-us/tools-resources/develop/microchip-studio) for AVR emulation
 
 Uses the [AVR architecture](https://en.wikipedia.org/wiki/Atmel_AVR_instruction_set), cuz I've used it before, it's easily emulated with QEMU, has a simple instruction set, and is used by Arduinos (which are easy to get your hands on). Arduinos (8-bit AVR microcontrollers) don't really have software, they have modifiable firmware. This means my OS isn't a piece of software started up by the BIOS (firmware), it IS the BIOS. So I guess I don't have to think of .iso images, boot sectors/bootloaders, or whatever...
 
