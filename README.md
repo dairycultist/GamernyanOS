@@ -1,6 +1,8 @@
 # GamernyanOS (stupid working title)
 
-either I make the lamest general purpose OS imagineable or make a "gaming OS" like the software you'd find loaded on a [3DS](https://en.wikipedia.org/wiki/Nintendo_3DS_system_software) or whatever. in either case it's just firmware that loads and runs arbitrary software
+either I make the lamest general purpose OS imagineable or make a "gaming OS" like the software you'd find loaded on a [3DS](https://en.wikipedia.org/wiki/Nintendo_3DS_system_software) or whatever.
+
+an OS is just firmware (hardware abstraction layer) that loads and runs arbitrary software
 
 ## Features
 
@@ -75,7 +77,7 @@ https://dmitry.gr/?r=05.Projects&proj=07.%20Linux%20on%208bit
 
 https://cstdspace.quora.com/How-to-start-making-a-simple-operating-system-in-C
 
-**OS image** - a snapshot of a computer's entire storage.
+**OS image** - a snapshot of a computer's entire storage. Key components are the **bootloader** and **kernel**.
 
 **Boot sector** - The very beginning of the OS image, and the part of memory the computer reads first to set up functionality. Contains the **bootloader**, assembly code (.S) that sets up the stack and calls the C main function of the **kernel**.
 
