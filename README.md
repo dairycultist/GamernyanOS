@@ -1,13 +1,12 @@
 # GamernyanOS (stupid working title)
 
-either I make the lamest general purpose OS imagineable or make a "gaming OS" like the software you'd find loaded on a [3DS](https://en.wikipedia.org/wiki/Nintendo_3DS_system_software) or whatever
+either I make the lamest general purpose OS imagineable or make a "gaming OS" like the software you'd find loaded on a [3DS](https://en.wikipedia.org/wiki/Nintendo_3DS_system_software) or whatever. in either case it's just firmware that loads and runs arbitrary software
 
 ## Features
 
 - Reading from and writing to hardware serial connection with UART
 - (TODO) Simple shell commands
-- (TODO) Reading from and writing to non-volatile storage (SD card peripheral) with SPI
-- (TODO) Custom filesystem (Arduino doesn't come with a default filesystem implementation)
+- (TODO) Reading from and writing to non-volatile storage. `qemu-system-avr` unfortunately doesn't support SD card controller emulation right now, so everything is stored in onboard flash memory.
 
 ## Run
 
@@ -28,17 +27,10 @@ brew install qemu
 avr-gcc -mmcu=atmega328p -Os -o main.elf main.c
 ```
 
-2. Create virtual SD card image (which will be a peripheral and the storage of our emulated machine).
+2. Run `test.elf` in a virtual environment (not using `-nographic` because then you can't terminate the session for some reason).
 
 ```
-qemu-img create -f raw sdcard.img 256K
-```
-
-3. Run `test.elf` in a virtual environment (not using `-nographic` because then you can't terminate the session for some reason). Put the SD card image into program memory with QEMU's [generic loader](https://qemu-project.gitlab.io/qemu/system/generic-loader.html).
-
-```
-qemu-system-avr -machine uno -bios main.elf -display none -serial stdio \
--device loader,file=sdcard.img,addr=16000
+qemu-system-avr -machine uno -bios main.elf -display none -serial stdio
 ```
 
 > [!TIP]
@@ -56,7 +48,11 @@ kernel - manages resources, connects software and hardware, I/O, device drivers
 
 `-DF_CPU=16000000UL` may be added to avr-gcc command to define CPU frequency if omitting `#define F_CPU 16000000UL` from script
 
+`qemu-img create -f raw sdcard.img 256K` Create virtual SD card image (which will be a peripheral and the storage of our emulated machine).
+
 `-device sd-card,drive=my_sdcard -drive id=my_sdcard,if=sd,format=raw,file=sdcard.img` Tell QEMU to emulate an SD card controller and attach our SD card image: Add SD card image as a virtual _drive_, which is referenced by a virtual _device_ (the SD card controller).
+
+put images into program memory with QEMU's [generic loader](https://qemu-project.gitlab.io/qemu/system/generic-loader.html).
 
 [Running an AVR program with QEMU](https://qemu-project.gitlab.io/qemu/system/target-avr.html)
 
