@@ -26,7 +26,7 @@ brew install qemu
 1. Compile C code to AVR assembly. `-Os` tells the compiler to optimize for code size.
 
 ```
-`avr-gcc -mmcu=atmega328p -Os -o test.elf test.c`
+avr-gcc -mmcu=atmega328p -Os -o test.elf test.c
 ```
 
 2. Run `test.elf` in a virtual environment. (not using -nographic because then you can't terminate the session for some reason)
