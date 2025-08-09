@@ -26,7 +26,7 @@ brew install qemu
 1. Compile C code to AVR assembly. `-Os` tells the compiler to optimize for code size.
 
 ```
-avr-gcc -mmcu=atmega328p -Os -o test.elf test.c
+avr-gcc -mmcu=atmega328p -Os -o main.elf main.c
 ```
 
 2. Create virtual SD card.
@@ -34,7 +34,7 @@ avr-gcc -mmcu=atmega328p -Os -o test.elf test.c
 3. Run `test.elf` in a virtual environment. (not using -nographic because then you can't terminate the session for some reason)
 
 ```
-qemu-system-avr -machine uno -bios test.elf -display none -serial stdio
+qemu-system-avr -machine uno -bios main.elf -display none -serial stdio
 ```
 
 > [!TIP]
