@@ -75,11 +75,11 @@ https://dmitry.gr/?r=05.Projects&proj=07.%20Linux%20on%208bit
 
 https://cstdspace.quora.com/How-to-start-making-a-simple-operating-system-in-C
 
-Computer starts. The BIOS, a piece of hardware-specific firmware (burnt into the hardware), initializes and tests hardware components, and provides hardware-abstracted services to the OS for boot-time hardware initialization, including establishing I/O and disk access. This differs from a Hardware Abstraction Layer (HAL), which is compiled together with the (hardware-agnostic) OS logic for the target hardware and provides advanced hardware-abstracted services the OS demands.
+Computer starts. **The Basic Input/Output System (BIOS)**, a piece of hardware-specific firmware (burnt into the hardware), initializes and tests hardware components, and provides hardware-abstracted services to the OS for boot-time hardware initialization, including establishing I/O and disk access. This differs from a **Hardware Abstraction Layer (HAL)**, which is compiled together with the (hardware-agnostic) OS logic for the target hardware, and provides advanced hardware-abstracted services the OS demands.
 
-**OS image** - a snapshot of a computer's entire storage.
+does an ISO image contain the BIOS? is that part of the storage??
 
-**Boot sector** - The very beginning of the OS image, and the part of memory the computer reads first to set up functionality. Contains the **bootloader**, machine code that sets up the stack and calls the main function of the **kernel**.
+**Boot sector** - The part of memory the computer reads first to set up functionality. Contains the **bootloader**, machine code that sets up the stack and calls the main function of the **kernel**.
 
 **Kernel** - The root program that loads and executes all other programs, manages their resources (memory allocations, file pointers), and connects software and hardware (I/O, peripherals/device drivers).
 
