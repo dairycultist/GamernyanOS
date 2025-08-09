@@ -30,7 +30,7 @@ either I make the lamest general purpose OS imagineable or make a "gaming OS" li
 
 ## References
 
-QEMU provides support for emulating SD card controllers and attaching images to represent the SD card's storage (a peripheral of an arduino) `qemu-img create sdcard.img 256K -f raw`
+QEMU provides support for emulating SD card controllers and attaching images to represent the SD card's storage (a peripheral of an arduino) `qemu-img create -f raw sdcard.img 256K` and add `-drive file=sdcard.img,format=raw` to the run command
 
 Arduinos (what I'm programming for) don't really have software, they have modifiable firmware. This means my OS isn't a piece of software started up by the BIOS (firmware), it IS the BIOS. So I guess I don't have to think of .iso images, boot sectors/bootloaders, or whatever...
 
