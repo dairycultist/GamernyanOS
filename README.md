@@ -79,6 +79,4 @@ Upon computer startup, the **Basic Input/Output System (BIOS)**, a piece of hard
 
 The BIOS then loads and executes the **bootloader**, a piece of software that is part of the OS and which is responsible for setting up basic functionalities (such as the stack) before loading and executing the **kernel**.
 
-The kernel is the root program of the OS that loads and executes all other programs, manages their resources (memory allocations, file pointers), and connects software and hardware (I/O, peripherals/device drivers). The kernel processes system calls that request hardware-specific operations so that software can remain hardware-agnostic.
-
-For example, the implementation `scanf()` from `<stdio.h>` involves system calls, such that software executing `scanf()` need not consider what devices are sending data to `stdin` or how, only that data _is_ being sent.
+The kernel is the root program of the OS that loads and executes all other programs, manages their resources (memory allocations, file pointers), and connects software and hardware (I/O, peripherals/device drivers). The kernel processes **system calls** that request hardware-specific operations so that software can remain hardware-agnostic. For example, the implementation `scanf()` from `<stdio.h>` involves system calls to the kernel, such that software executing `scanf()` need not consider what devices are sending data to `stdin` or how, only that data _is_ being sent.
