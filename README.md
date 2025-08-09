@@ -42,11 +42,11 @@ Uses the [AVR architecture](https://en.wikipedia.org/wiki/Atmel_AVR_instruction_
 
 SD cards are block-addressed, meaning data is written and read in fixed-size blocks (typically 512 bytes), as opposed to arbitrary addresses. You must send specific commands to the SD card to initialize it, select the desired block address, and then send the data for writing. These commands are part of the SD card's SPI or SDIO interface protocol. This is __raw data__, any filesystem implementation (for creating and locating allocations) must be done yourself
 
-embedded systems are allowed to poke at specific memory addresses directly because, uh, I have no malloc lol
+embedded systems programming :pensive:
 
-bootloader written in assembly (.S) that sets up the stack (and maybe some other stuff) and calls the C main function. startup/entrypoint
+bootloader/boot sector/startup/entrypoint/first part of image that's written in assembly (.S) that sets up the stack (and maybe some other stuff) and calls the C main function.
 
-kernel - manages resources, connects software and hardware, I/O, device drivers
+kernel - manages resources (memory allocations, file pointers) and connects software and hardware (I/O, peripherals/device drivers)
 
 `-DF_CPU=16000000UL` may be added to avr-gcc command to define CPU frequency if omitting `#define F_CPU 16000000UL` from script
 
