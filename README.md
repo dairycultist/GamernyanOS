@@ -42,7 +42,9 @@ qemu-system-avr -machine uno -bios test.elf -display none -serial stdio
 
 ## References
 
-[SD Card](http://www.rjhcoding.com/avrc-sd-interface-1.php)
+- [Running an AVR program with QEMU](https://qemu-project.gitlab.io/qemu/system/target-avr.html)
+- [Transmit data over serial connection with UART](https://www.appelsiini.net/2011/simple-usart-with-avr-libc/)
+- [AVR initialize connected SD card](http://www.rjhcoding.com/avrc-sd-interface-1.php)
 
 SD cards are block-addressed, meaning data is written and read in fixed-size blocks (typically 512 bytes), as opposed to arbitrary addresses. You must send specific commands to the SD card to initialize it, select the desired block address, and then send the data for writing. These commands are part of the SD card's SPI or SDIO interface protocol. This is __raw data__, any filesystem implementation (for creating and locating allocations) must be done yourself
 
@@ -82,8 +84,6 @@ bootloader written in assembly (.S) that sets up the stack (and maybe some other
 kernel - manages resources, connects software and hardware, I/O, device drivers
 
 `-DF_CPU=16000000UL` may be added to avr-gcc command to define CPU frequency if omitting `#define F_CPU 16000000UL` from script
-
-https://qemu-project.gitlab.io/qemu/system/target-avr.html
 
 https://dmitry.gr/?r=05.Projects&proj=07.%20Linux%20on%208bit
 
