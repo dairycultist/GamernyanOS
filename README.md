@@ -6,7 +6,7 @@ either I make the lamest general purpose OS imagineable or make a "gaming OS" li
 
 - Reading from and writing to serial connection (via [UART](https://www.appelsiini.net/2011/simple-usart-with-avr-libc/))
 - (TODO) Simple shell commands (and code separation...)
-- (TODO) Custom non-volatile file system (Arduino write to memory in raw sd card since Arduino doesn't come with a filesystem/\<stdio.h> implementation)
+- (TODO) Non-volatile storage via SD card peripheral (Arduino doesn't come with a filesystem/\<stdio.h> implementation)
 
 ## Run
 
