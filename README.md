@@ -4,9 +4,10 @@ either I make the lamest general purpose OS imagineable or make a "gaming OS" li
 
 ## Features
 
-- Reading from and writing to serial connection (via [UART](https://www.appelsiini.net/2011/simple-usart-with-avr-libc/))
-- (TODO) Simple shell commands (and code separation...)
-- (TODO) Non-volatile storage via SD card peripheral (Arduino doesn't come with a filesystem/\<stdio.h> implementation)
+- Reading from and writing to hardware serial connection with UART
+- (TODO) Simple shell commands
+- (TODO) Reading from and writing to non-volatile storage (SD card peripheral) with SPI
+- (TODO) Custom filesystem (Arduino doesn't come with a default filesystem implementation)
 
 ## Run
 
