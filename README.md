@@ -44,10 +44,6 @@ SD cards are block-addressed, meaning data is written and read in fixed-size blo
 
 embedded systems programming :pensive:
 
-bootloader/boot sector/startup/entrypoint/first part of image that's written in assembly (.S) that sets up the stack (and maybe some other stuff) and calls the C main function.
-
-kernel - manages resources (memory allocations, file pointers) and connects software and hardware (I/O, peripherals/device drivers)
-
 `-DF_CPU=16000000UL` may be added to avr-gcc command to define CPU frequency if omitting `#define F_CPU 16000000UL` from script
 
 `-device sd-card,drive=my_sdcard -drive id=my_sdcard,if=sd,format=raw,file=sdcard.img` Tell QEMU to emulate an SD card controller and attach our SD card image: Add SD card image as a virtual _drive_, which is referenced by a virtual _device_ (the SD card controller).
@@ -78,3 +74,9 @@ put images into program memory with QEMU's [generic loader](https://qemu-project
 https://dmitry.gr/?r=05.Projects&proj=07.%20Linux%20on%208bit
 
 https://cstdspace.quora.com/How-to-start-making-a-simple-operating-system-in-C
+
+**OS image** - a snapshot of a computer's entire storage.
+
+**Boot sector** - The very beginning of the OS image, and the part of memory the computer reads first to set up functionality. Contains the **bootloader**, assembly code (.S) that sets up the stack and calls the C main function.
+
+**Kernel** - Executes programs, manages resources (memory allocations, file pointers) and connects software and hardware (I/O, peripherals/device drivers).
