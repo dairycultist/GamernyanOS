@@ -32,6 +32,24 @@ either I make the lamest general purpose OS imagineable or make a "gaming OS" li
 
 QEMU provides support for emulating SD card controllers and attaching images to represent the SD card's storage (a peripheral of an arduino) `qemu-img create -f raw sdcard.img 256K` and add `-drive file=sdcard.img,format=raw` to the run command
 
+`-device sd-card,drive=sdcard0 -drive id=sdcard0,if=sd,format=raw,file=sdcard.img`
+
+```
+-device sd-card,drive=sdcard0:
+
+    -device: This option is used to add a virtual device to the emulated machine.
+    sd-card: This specifies that the device being added is an SD card controller.
+    drive=sdcard0: This connects the SD card device to a drive with the ID sdcard0 which is defined later in the command.
+
+-drive id=sdcard0,if=sd,format=raw,file=sdcard.img:
+
+    -drive: This option configures a virtual drive.
+    id=sdcard0: This gives a unique ID to this drive, allowing it to be referenced by devices like the SD card controller.
+    if=sd: This indicates the interface type for the drive, which is an SD card interface in this case.
+    format=raw: This specifies the format of the disk image. raw means it's a raw disk image, directly representing the data without any additional metadata.
+    file=sdcard.img: This defines the file on your host system that serves as the backing store for the virtual SD card. This file will store all data written to the emulated SD card, providing the persistence you're looking for
+```
+
 Arduinos (what I'm programming for) don't really have software, they have modifiable firmware. This means my OS isn't a piece of software started up by the BIOS (firmware), it IS the BIOS. So I guess I don't have to think of .iso images, boot sectors/bootloaders, or whatever...
 
 bootloader written in assembly (.S) that sets up the stack (and maybe some other stuff) and calls the C main function. startup/entrypoint
