@@ -75,8 +75,12 @@ https://dmitry.gr/?r=05.Projects&proj=07.%20Linux%20on%208bit
 
 https://cstdspace.quora.com/How-to-start-making-a-simple-operating-system-in-C
 
-**OS image** - a snapshot of a computer's entire storage. Key components are the **bootloader** and **kernel**.
+Computer starts. The BIOS, a piece of hardware-specific firmware (burnt into the hardware), initializes and tests hardware components, and provides hardware-abstracted services to the OS for boot-time hardware initialization, including establishing I/O and disk access. This differs from a Hardware Abstraction Layer (HAL), which is bundled with the OS for the target hardware and provides advanced hardware-abstracted services the OS demands.
+
+**OS image** - a snapshot of a computer's entire storage.
 
 **Boot sector** - The very beginning of the OS image, and the part of memory the computer reads first to set up functionality. Contains the **bootloader**, machine code that sets up the stack and calls the main function of the **kernel**.
 
-**Kernel** - The root program that loads and executes all other programs, manages their resources (memory allocations, file pointers), and connects software and hardware (I/O, peripherals/device drivers). The kernel is hardware-specific firmware that acts as a hardware abstraction layer so that any arbitrary software may be run on this hardware. For example, the kernel implements `scanf()` from `<stdio.h>` as is necessary for the hardware, such that software executing `scanf()` need not consider what devices are sending data to `stdin` or how, only that data _is_ being sent.
+**Kernel** - The root program that loads and executes all other programs, manages their resources (memory allocations, file pointers), and connects software and hardware (I/O, peripherals/device drivers).
+
+ `scanf()` from `<stdio.h>` is implemented as is necessary for the hardware, such that software executing `scanf()` need not consider what devices are sending data to `stdin` or how, only that data _is_ being sent.
