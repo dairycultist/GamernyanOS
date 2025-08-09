@@ -1,6 +1,6 @@
 // SD card transfer protocol (SPI, Serial Peripheral Interface) implementation
-// Reference: http://www.rjhcoding.com/avrc-sd-interface-1.php
-// https://en.wikipedia.org/wiki/Serial_Peripheral_Interface
+// References: http://www.rjhcoding.com/avrc-sd-interface-1.php
+//             https://en.wikipedia.org/wiki/Serial_Peripheral_Interface
 
 // four channels, SS, SCLK, MOSI, MISO
 
