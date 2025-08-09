@@ -2,7 +2,7 @@
 
 typedef unsigned char byte;
 
-#include "spi.c"	// SD card
+#include "sd.c"		// SD card
 #include "uart.c"	// serial communication
 
 int main() {
