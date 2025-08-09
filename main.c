@@ -2,8 +2,8 @@
 
 typedef unsigned char byte;
 
-#include "storage.c"
-#include "uart.c"
+#include "spi.c"	// SD card transfer protocol implementation (Serial Peripheral Interface)
+#include "uart.c"	// serial communication
 
 int main() {
 
