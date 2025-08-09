@@ -27,26 +27,16 @@ brew install qemu
 avr-gcc -mmcu=atmega328p -Os -o main.elf main.c
 ```
 
-2. Create memory backend to store program RAM in.
+2. Run `test.elf` in a virtual environment (not using `-nographic` because then you can't terminate the session for some reason).
 
 ```
-qemu-img create -f raw sdcard.img 256K
-```
-
-3. Run `test.elf` in a virtual environment (not using `-nographic` because then you can't terminate the session for some reason).
-
-```
-qemu-system-avr -bios main.elf -display none -serial stdio \
--object memory-backend-file,id=pc.ram,size=256K,mem-path=sdcard.img,prealloc=on,share=on \
--machine uno,memory-backend=pc.ram -m 256K
+qemu-system-avr -bios main.elf -display none -serial stdio
 ```
 
 > [!TIP]
 > Run `qemu-system-avr -machine help` to see QEMU-provided machines that run AVR architecture (`atmega328p` is aliased as `uno`).
 
 ## Notes
-
-In QEMU, `mtdblock` refers to the emulation of a Memory Technology Device (MTD) as a block device. This is particularly useful when working with embedded systems that utilize flash memory, as MTDs are the standard Linux subsystem for managing raw flash devices.
 
 might look into [Microchip Studio](https://www.microchip.com/en-us/tools-resources/develop/microchip-studio) for AVR emulation
 
@@ -65,6 +55,8 @@ kernel - manages resources, connects software and hardware, I/O, device drivers
 `-device sd-card,drive=my_sdcard -drive id=my_sdcard,if=sd,format=raw,file=sdcard.img` Tell QEMU to emulate an SD card controller and attach our SD card image: Add SD card image as a virtual _drive_, which is referenced by a virtual _device_ (the SD card controller).
 
 put images into program memory with QEMU's [generic loader](https://qemu-project.gitlab.io/qemu/system/generic-loader.html).
+
+`qemu-img create -f raw sdcard.img 256K`
 
 [Running an AVR program with QEMU](https://qemu-project.gitlab.io/qemu/system/target-avr.html)
 
