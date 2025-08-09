@@ -58,6 +58,23 @@ put images into program memory with QEMU's [generic loader](https://qemu-project
 
 `qemu-img create -f raw sdcard.img 256K`
 
+```
+// spi.c
+
+// SD card transfer protocol (SPI, Serial Peripheral Interface) implementation
+// References: http://www.rjhcoding.com/avrc-sd-interface-1.php
+//             https://en.wikipedia.org/wiki/Serial_Peripheral_Interface
+
+// four channels, SS, SCLK, MOSI, MISO
+
+// Initialize the SD card: Send the necessary commands (e.g., CMD0, CMD8, CMD55, ACMD41) to put the SD card into SPI mode and initialize it for operation.
+// Select the block address: Send a command to specify the starting block address where you want to write your data.
+// Send the write command: Send the appropriate command for single-block or multi-block write operations.
+// Transmit the data: Send the raw data in 512-byte blocks to the SD card.
+// Handle CRC: If enabled, ensure correct CRC calculations and handling for data integrity.
+// Wait for completion: Monitor the SD card's status to confirm the write operation has completed.
+```
+
 [Running an AVR program with QEMU](https://qemu-project.gitlab.io/qemu/system/target-avr.html)
 
 https://dmitry.gr/?r=05.Projects&proj=07.%20Linux%20on%208bit
