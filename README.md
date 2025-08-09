@@ -8,7 +8,7 @@ either I make the lamest general purpose OS imagineable or make a "gaming OS" li
 
 - Reading from and writing to serial connection (via [UART](https://www.appelsiini.net/2011/simple-usart-with-avr-libc/))
 - (TODO) Simple shell commands (and code separation...)
-- (TODO) Non-volatile file system
+- (TODO) Non-volatile file system (Arduino write to memory in raw sd card since Arduino doesn't come with a filesystem/\<stdio.h> implementation)
 
 ## Run
 
@@ -29,7 +29,9 @@ brew install qemu
 avr-gcc -mmcu=atmega328p -Os -o test.elf test.c
 ```
 
-2. Run `test.elf` in a virtual environment. (not using -nographic because then you can't terminate the session for some reason)
+2. Create virtual SD card.
+
+3. Run `test.elf` in a virtual environment. (not using -nographic because then you can't terminate the session for some reason)
 
 ```
 qemu-system-avr -machine uno -bios test.elf -display none -serial stdio
