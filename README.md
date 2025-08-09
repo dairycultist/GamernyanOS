@@ -38,6 +38,8 @@ qemu-system-avr -machine uno -bios main.elf -display none -serial stdio
 
 ## Notes
 
+In QEMU, `mtdblock` refers to the emulation of a Memory Technology Device (MTD) as a block device. This is particularly useful when working with embedded systems that utilize flash memory, as MTDs are the standard Linux subsystem for managing raw flash devices.
+
 might look into [Microchip Studio](https://www.microchip.com/en-us/tools-resources/develop/microchip-studio) for AVR emulation
 
 Uses the [AVR architecture](https://en.wikipedia.org/wiki/Atmel_AVR_instruction_set), cuz I've used it before, it's easily emulated with QEMU, has a simple instruction set, and is used by Arduinos (which are easy to get your hands on). Arduinos (8-bit AVR microcontrollers) don't really have software, they have modifiable firmware. This means my OS isn't a piece of software started up by the BIOS (firmware), it IS the BIOS. So I guess I don't have to think of .iso images, boot sectors/bootloaders, or whatever...
