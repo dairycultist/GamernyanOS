@@ -1,5 +1,8 @@
 // SD card transfer protocol (SPI, Serial Peripheral Interface) implementation
 // Reference: http://www.rjhcoding.com/avrc-sd-interface-1.php
+// https://en.wikipedia.org/wiki/Serial_Peripheral_Interface
+
+// four channels, SS, SCLK, MOSI, MISO
 
 // Initialize the SD card: Send the necessary commands (e.g., CMD0, CMD8, CMD55, ACMD41) to put the SD card into SPI mode and initialize it for operation.
 // Select the block address: Send a command to specify the starting block address where you want to write your data.
