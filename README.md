@@ -33,17 +33,11 @@ avr-gcc -mmcu=atmega328p -Os -o main.elf main.c
 qemu-img create -f raw sdcard.img 256K
 ```
 
-4. Run `test.elf` in a virtual environment. (not using -nographic because then you can't terminate the session for some reason)
-
-gotta remember to tell QEMU to emulate an SD card controller and attach our SD card image
-
-add `-drive file=sdcard.img,format=raw` to the run command
-
-Add SD card image as a virtual _drive_, which is referenced by a virtual _device_ (the SD card controller).
-`-device sd-card,drive=my_sdcard -drive id=my_sdcard,if=sd,format=raw,file=sdcard.img`
+4. Run `test.elf` in a virtual environment (not using `-nographic` because then you can't terminate the session for some reason). Tell QEMU to emulate an SD card controller and attach our SD card image: Add SD card image as a virtual _drive_, which is referenced by a virtual _device_ (the SD card controller).
 
 ```
-qemu-system-avr -machine uno -bios main.elf -display none -serial stdio
+qemu-system-avr -machine uno -bios main.elf -display none -serial stdio \
+  -device sd-card,drive=my_sdcard -drive id=my_sdcard,if=sd,format=raw,file=sdcard.img
 ```
 
 > [!TIP]
