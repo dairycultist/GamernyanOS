@@ -2,7 +2,7 @@
 
 I'm gonna be working with the [AVR architecture](https://en.wikipedia.org/wiki/Atmel_AVR_instruction_set), cuz I've used it before, it's easily emulated with QEMU, has a simple instruction set, and is used by Arduinos (which are easy to get your hands on).
 
-either I make the lamest general purpose OS imagineable or make a "gaming OS" like the software you'd find loaded on a DS or whatever
+either I make the lamest general purpose OS imagineable or make a "gaming OS" like the software you'd find loaded on a [3DS](https://en.wikipedia.org/wiki/Nintendo_3DS_system_software) or whatever
 
 ## Features
 
