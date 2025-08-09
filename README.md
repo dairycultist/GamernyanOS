@@ -29,7 +29,9 @@ avr-gcc -mmcu=atmega328p -Os -o main.elf main.c
 
 2. Create memory backend to store program RAM in.
 
-```qemu-img create -f raw sdcard.img 256K```
+```
+qemu-img create -f raw sdcard.img 256K
+```
 
 3. Run `test.elf` in a virtual environment (not using `-nographic` because then you can't terminate the session for some reason).
 
