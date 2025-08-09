@@ -77,8 +77,6 @@ https://cstdspace.quora.com/How-to-start-making-a-simple-operating-system-in-C
 
 Upon computer startup, the **Basic Input/Output System (BIOS)**, a piece of hardware-specific firmware (burnt into the hardware), initializes and tests hardware components, and provides hardware-abstracted services to the OS for boot-time hardware initialization, including establishing I/O and disk access. This differs from a **Hardware Abstraction Layer (HAL)**, which is compiled together with the (hardware-agnostic) OS logic for the target hardware, and provides advanced hardware-abstracted services the OS demands.
 
-The BIOS then loads and executes the **bootloader**, a piece of software that is part of the OS and which is responsible for setting up basic functionalities (such as the stack) and loading and executing the kernel.
-
-The kernel is the root program of the OS that loads and executes all other programs, manages their resources (memory allocations, file pointers), and connects software and hardware (I/O, peripherals/device drivers).
+The BIOS then loads and executes the **bootloader**, a piece of software that is part of the OS and which is responsible for setting up basic functionalities (such as the stack) before loading and executing the **kernel**. The kernel is the root program of the OS that loads and executes all other programs, manages their resources (memory allocations, file pointers), and connects software and hardware (I/O, peripherals/device drivers).
 
  `scanf()` from `<stdio.h>` is implemented as is necessary for the hardware, such that software executing `scanf()` need not consider what devices are sending data to `stdin` or how, only that data _is_ being sent.
