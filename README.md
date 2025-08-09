@@ -42,6 +42,8 @@ qemu-system-avr -machine uno -bios test.elf -display none -serial stdio
 
 ## References
 
+[SD Card](http://www.rjhcoding.com/avrc-sd-interface-1.php)
+
 SD cards are block-addressed, meaning data is written and read in fixed-size blocks (typically 512 bytes), as opposed to arbitrary addresses. You must send specific commands to the SD card to initialize it, select the desired block address, and then send the data for writing. These commands are part of the SD card's SPI or SDIO interface protocol. This is __raw data__, any filesystem implementation (for creating and locating allocations) must be done yourself
 
 ```
