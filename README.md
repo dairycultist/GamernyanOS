@@ -34,11 +34,11 @@ avr-gcc -mmcu=atmega328p -Os -o main.elf main.c
 qemu-img create -f raw sdcard.img 256K
 ```
 
-4. Run `test.elf` in a virtual environment (not using `-nographic` because then you can't terminate the session for some reason). Tell QEMU to emulate an SD card controller and attach our SD card image: Add SD card image as a virtual _drive_, which is referenced by a virtual _device_ (the SD card controller).
+3. Run `test.elf` in a virtual environment (not using `-nographic` because then you can't terminate the session for some reason). Put the SD card image into program memory with QEMU's [generic loader](https://qemu-project.gitlab.io/qemu/system/generic-loader.html).
 
 ```
 qemu-system-avr -machine uno -bios main.elf -display none -serial stdio \
-  -device sd-card,drive=my_sdcard -drive id=my_sdcard,if=sd,format=raw,file=sdcard.img
+-device loader,file=sdcard.img,addr=16000
 ```
 
 > [!TIP]
@@ -50,13 +50,15 @@ Uses the [AVR architecture](https://en.wikipedia.org/wiki/Atmel_AVR_instruction_
 
 SD cards are block-addressed, meaning data is written and read in fixed-size blocks (typically 512 bytes), as opposed to arbitrary addresses. You must send specific commands to the SD card to initialize it, select the desired block address, and then send the data for writing. These commands are part of the SD card's SPI or SDIO interface protocol. This is __raw data__, any filesystem implementation (for creating and locating allocations) must be done yourself
 
-[Running an AVR program with QEMU](https://qemu-project.gitlab.io/qemu/system/target-avr.html)
-
 bootloader written in assembly (.S) that sets up the stack (and maybe some other stuff) and calls the C main function. startup/entrypoint
 
 kernel - manages resources, connects software and hardware, I/O, device drivers
 
 `-DF_CPU=16000000UL` may be added to avr-gcc command to define CPU frequency if omitting `#define F_CPU 16000000UL` from script
+
+`-device sd-card,drive=my_sdcard -drive id=my_sdcard,if=sd,format=raw,file=sdcard.img` Tell QEMU to emulate an SD card controller and attach our SD card image: Add SD card image as a virtual _drive_, which is referenced by a virtual _device_ (the SD card controller).
+
+[Running an AVR program with QEMU](https://qemu-project.gitlab.io/qemu/system/target-avr.html)
 
 https://dmitry.gr/?r=05.Projects&proj=07.%20Linux%20on%208bit
 
