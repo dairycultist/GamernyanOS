@@ -30,14 +30,16 @@ either I make the lamest general purpose OS imagineable or make a "gaming OS" li
 
 ## References
 
-An OS is built from a .iso file (disk image), but I currently only have a .elf (executable). [learning how a computer interprets a .iso is gonna be a thing I need to do](https://stackoverflow.com/questions/59593720/how-to-make-a-bootable-disc-iso-that-loads-a-kernel-elf)
+QEMU provides support for emulating SD card controllers and attaching images to represent the SD card's storage (a peripheral of an arduino) `qemu-img create sdcard.img 256K -f raw`
+
+Arduinos (what I'm programming for) don't really have software, they have modifiable firmware. This means my OS isn't a piece of software started up by the BIOS (firmware), it IS the BIOS. So I guess I don't have to think of .iso images, boot sectors/bootloaders, or whatever...
 
 bootloader written in assembly (.S) that sets up the stack (and maybe some other stuff) and calls the C main function. startup/entrypoint
+
+kernel - manages resources, connects software and hardware, I/O, device drivers
 
 https://qemu-project.gitlab.io/qemu/system/target-avr.html
 
 https://dmitry.gr/?r=05.Projects&proj=07.%20Linux%20on%208bit
-
-kernel - manages resources, connects software and hardware, I/O, device drivers
 
 https://cstdspace.quora.com/How-to-start-making-a-simple-operating-system-in-C
