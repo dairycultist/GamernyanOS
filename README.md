@@ -2,8 +2,6 @@
 
 either I make the lamest general purpose OS imagineable or make a "gaming OS" like the software you'd find loaded on a [3DS](https://en.wikipedia.org/wiki/Nintendo_3DS_system_software) or whatever.
 
-an OS is just firmware (hardware abstraction layer) that loads and runs arbitrary software
-
 ## Features
 
 - Reading from and writing to hardware serial connection with UART
@@ -81,4 +79,4 @@ https://cstdspace.quora.com/How-to-start-making-a-simple-operating-system-in-C
 
 **Boot sector** - The very beginning of the OS image, and the part of memory the computer reads first to set up functionality. Contains the **bootloader**, assembly code (.S) that sets up the stack and calls the C main function of the **kernel**.
 
-**Kernel** - The root program that executes all other programs, manages their resources (memory allocations, file pointers), and connects software and hardware (I/O, peripherals/device drivers).
+**Kernel** - The root program that loads and executes all other programs, manages their resources (memory allocations, file pointers), and connects software and hardware (I/O, peripherals/device drivers). The kernel is hardware-specific firmware that acts as a hardware abstraction layer so that any arbitrary software may be run on this hardware.
