@@ -1,3 +1,6 @@
+// transmit data over serial connection with UART
+// Reference: https://www.appelsiini.net/2011/simple-usart-with-avr-libc/
+
 #define F_CPU 16000000UL
 #define BAUD 9600
 #define BAUD_RATE ((F_CPU / (16UL * BAUD)) - 1)
