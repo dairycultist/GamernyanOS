@@ -30,6 +30,8 @@ bootloader (written in assembly then assembled to a .bin binary file) + executab
 
 SD cards are block-addressed, meaning data is written and read in fixed-size blocks (typically 512 bytes), as opposed to arbitrary addresses. You must send specific commands to the SD card to initialize it, select the desired block address, and then send the data for writing. These commands are part of the SD card's SPI or SDIO interface protocol. This is __raw data__, any filesystem implementation (for creating and locating allocations) must be done yourself
 
+.img is also a disk image type but it's for emulating floppies (smaller storage basically) and while technically usable it's not as widely supported/easily sharable so
+
 embedded systems programming :pensive:
 
 `-DF_CPU=16000000UL` may be added to avr-gcc command to define CPU frequency if omitting `#define F_CPU 16000000UL` from script
