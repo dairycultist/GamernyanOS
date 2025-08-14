@@ -28,12 +28,14 @@ bootloader (written in assembly then assembled to a .bin binary file) + executab
 1. Compile C code to AVR assembly. `-Os` tells the compiler to optimize for code size.
 
 ```
-avr-gcc -mmcu=atmega328p -Os -o main.elf main.c
+avr-gcc -mmcu=atmega328p -Os -o bootloader.elf main.c
 ```
 
-2. `mkisofs -o os.iso PATH`
+2. `arm-none-eabi-objcopy -O binary bootloader.elf bootloader.bin -I elf32-littlearm`
 
-3. Run your iso image in a `atmega328p` virtual environment (`atmega328p` is aliased as `uno`) (not using `-nographic` because then you can't terminate the session for some reason).
+3. `mkisofs -o os.iso PATH`
+
+4. Run your iso image in a `atmega328p` virtual environment (`atmega328p` is aliased as `uno`) (not using `-nographic` because then you can't terminate the session for some reason).
 
 ```
 qemu-system-avr -machine uno -cdrom os.iso -display none -serial stdio
