@@ -4,11 +4,11 @@ either I make:
 - the lamest general purpose OS imagineable
 - a console's OS like the software you'd find loaded on a [3DS](https://en.wikipedia.org/wiki/Nintendo_3DS_system_software) or whatever
 
-## Features
+I should look into the ARM architecture
 
-- Reading from and writing to hardware serial connection with UART
-- (TODO) Simple shell commands
-- (TODO) Reading from and writing to non-volatile storage (debating between SD card vs. onboard flash memory)
+I want
+- I/O (hardware serial connection with UART?)
+- Non-volatile storage
 
 ## Run
 
