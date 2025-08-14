@@ -19,11 +19,13 @@ bootloader (written in assembly then assembled to a .bin binary file) + executab
 
 - `brew install --cask gcc-arm-embedded` | Installs the `arm-none-eabi-gcc` compiler used to compile C for an ARM architecture.
 
-- `brew install cdrtools` | Installs the `mkisofs` tool for creating disk images from a local filesystem.
+- `brew install cdrtools` | Installs the `mkisofs` tool for creating .iso disk images from a local filesystem.
 
-- `brew install qemu` | Installs the [QEMU](https://www.qemu.org/) emulator, which also provides disk image utilities.
+- `brew install qemu` | Installs the [QEMU](https://www.qemu.org/) emulator (which also provides disk image utilities?).
 
 ### Creating and booting the disk image
+
+mkisofs -o arch.iso ArchLinuxARM-rpi-armv7-latest
 
 > [!TIP]
 > Run `qemu-system-arm -machine help` to see QEMU-provided machines that implement ARM architecture.
