@@ -15,8 +15,6 @@ I want
 
 ## Run
 
-bootloader (written in assembly then assembled to a .bin binary file) + executable kernel software (compiled from C to .elf then assembled to a .bin binary file) + disk image creation software = optical disk image (.iso)
-
 ### Prerequisites
 
 - `brew tap osx-cross/avr && brew install avr-gcc` | Installs the `avr-gcc` compiler used to compile C for AVR architectures.
@@ -43,6 +41,8 @@ qemu-system-avr -machine uno -bios bootloader.bin
 ---
 
 idk if we can create a disk image, aka combine our above bootloader with a kernel script or smth
+
+bootloader (written in assembly then assembled to a .bin binary file) + executable kernel software (compiled from C to .elf then assembled to a .bin binary file) + disk image creation software = optical disk image (.iso)
 
 2. `qemu-img create -f raw hard_disk_drive.img 10M` create disk image
 
