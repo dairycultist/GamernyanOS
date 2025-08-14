@@ -41,16 +41,18 @@ avr-gcc -mmcu=atmega328p -Os -o bootloader.elf main.c
 qemu-system-avr -machine uno -cdrom os.iso
 ```
 
-Use control+option+2 to switch to serial view.
-
 
 ---
 
-`qemu-img create -f raw hard_disk_drive.img 10M` create disk image
+1. write bootloader in assembly and assemble to a binary
 
-`dd if=bootloader.bin of=hard_disk_drive.img bs=512 count=1 conv=notrunc` copy your bootloader binary to the beginning (the boot sector, which is the first 512 bytes) of your disk image
+2. `qemu-img create -f raw hard_disk_drive.img 10M` create disk image
 
-`qemu-system-avr -machine uno -drive file=hard_disk_drive.img,format=raw` run machine using `hard_disk_drive.img` as backing file (snapshot to load virtual drive from)
+3. `dd if=bootloader.bin of=hard_disk_drive.img bs=512 count=1 conv=notrunc` copy your bootloader binary to the beginning (the boot sector, which is the first 512 bytes) of your disk image
+
+4. `qemu-system-avr -machine uno -drive file=hard_disk_drive.img,format=raw` run machine using `hard_disk_drive.img` as backing file (snapshot to load virtual drive from)
+
+Use control+option+2 to switch to serial view. I think `qemu-system-avr -machine uno -cdrom hard_disk_drive.img` works also but might have differences idk!!
 
 ## Notes
 
