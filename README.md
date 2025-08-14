@@ -2,6 +2,8 @@
 
 atmega328p doesn't have a BIOS (all the hardware connection stuff is handled by the bootloader, which comes with the board but is modifiable, unlike a BIOS).
 
+might look into [Microchip Studio](https://www.microchip.com/en-us/tools-resources/develop/microchip-studio) for AVR emulation given the limitations QEMU has with AVR
+
 either I make:
 - the lamest general purpose OS imagineable
 - a console's OS like the software you'd find loaded on a [3DS](https://en.wikipedia.org/wiki/Nintendo_3DS_system_software) or whatever
@@ -17,9 +19,9 @@ bootloader (written in assembly then assembled to a .bin binary file) + executab
 
 ### Prerequisites
 
-- `brew install --cask gcc-arm-embedded` | Installs the `arm-none-eabi-gcc` compiler used to compile C for an ARM architecture.
+- `brew install binutils` for `objcopy` which can turn .elf to .bin
 
-- install `avr-gcc` idk if I'm using AVRE or ARM architecture yet, I just wanna get something on a disk image running
+- `brew tap osx-cross/avr && brew install avr-gcc` | Installs the `avr-gcc` compiler used to compile C for AVR architectures.
 
 - `brew install qemu` | Installs the [QEMU](https://www.qemu.org/) emulator (which also provides disk image utilities?).
 
