@@ -11,7 +11,7 @@ I want
 
 ## Run
 
-atmega328p doesn't have a BIOS (all the hardware connection stuff is handled by the bootloader (like [Optiboot](https://github.com/Optiboot/optiboot)), which comes with the board but is modifiable, unlike a BIOS).
+atmega328p doesn't have a BIOS (all the hardware connection stuff is handled by a bootloader like [Optiboot](https://github.com/Optiboot/optiboot), one of which comes with the board but is modifiable, unlike a BIOS).
 
 might look into [Microchip Studio](https://www.microchip.com/en-us/tools-resources/develop/microchip-studio) for AVR emulation given the limitations QEMU has with AVR
 
