@@ -1,6 +1,8 @@
 # GamernyanOS (stupid working title)
 
-either I make the lamest general purpose OS imagineable or make a "gaming OS" like the software you'd find loaded on a [3DS](https://en.wikipedia.org/wiki/Nintendo_3DS_system_software) or whatever.
+either I make:
+- the lamest general purpose OS imagineable
+- a console's OS like the software you'd find loaded on a [3DS](https://en.wikipedia.org/wiki/Nintendo_3DS_system_software) or whatever
 
 ## Features
 
