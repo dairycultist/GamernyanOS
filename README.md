@@ -13,14 +13,13 @@ I want
 
 ## Run
 
+bootloader (written in assembly) + executable kernel software (compiled from C to .elf) + disk image creation software = disk image (.iso)
+
 ### Prerequisites
 
-Install `arm-none-eabi-gcc` compiler and [QEMU](https://www.qemu.org/) emulator.
+- `brew install --cask gcc-arm-embedded` | Installs the `arm-none-eabi-gcc` compiler used to compile C for an ARM architecture.
 
-```
-brew install --cask gcc-arm-embedded
-brew install qemu
-```
+- `brew install qemu` | [QEMU](https://www.qemu.org/) emulator.
 
 ### Compiling and running
 
@@ -40,8 +39,6 @@ qemu-system-avr -bios main.elf -display none -serial stdio
 > Run `qemu-system-avr -machine help` to see QEMU-provided machines that run AVR architecture (`atmega328p` is aliased as `uno`).
 
 ## Notes
-
-Uses the [AVR architecture](https://en.wikipedia.org/wiki/Atmel_AVR_instruction_set), cuz I've used it before, it's easily emulated with QEMU, has a simple instruction set, and is used by Arduinos (which are easy to get your hands on). Arduinos (8-bit AVR microcontrollers) don't really have software, they have modifiable firmware. This means my OS isn't a piece of software started up by the BIOS (firmware), it IS the BIOS. So I guess I don't have to think of .iso images, boot sectors/bootloaders, or whatever...
 
 SD cards are block-addressed, meaning data is written and read in fixed-size blocks (typically 512 bytes), as opposed to arbitrary addresses. You must send specific commands to the SD card to initialize it, select the desired block address, and then send the data for writing. These commands are part of the SD card's SPI or SDIO interface protocol. This is __raw data__, any filesystem implementation (for creating and locating allocations) must be done yourself
 
@@ -72,14 +69,12 @@ put images into program memory with QEMU's [generic loader](https://qemu-project
 // Wait for completion: Monitor the SD card's status to confirm the write operation has completed.
 ```
 
-[Running an AVR program with QEMU](https://qemu-project.gitlab.io/qemu/system/target-avr.html)
-
 https://dmitry.gr/?r=05.Projects&proj=07.%20Linux%20on%208bit
 
 https://cstdspace.quora.com/How-to-start-making-a-simple-operating-system-in-C
 
 Upon computer startup, the **Basic Input/Output System (BIOS)**, a piece of hardware-specific firmware (burnt into the hardware), initializes and tests hardware components, and provides hardware-abstracted services to the OS for boot-time hardware initialization, including establishing I/O and disk access. This differs from a **Hardware Abstraction Layer (HAL)**, which is compiled together with the (hardware-agnostic) OS logic for the target hardware, and provides additional hardware-abstracted services not provided by the BIOS.
 
-The BIOS then loads and executes the **bootloader**, a piece of software that is part of the OS and which is responsible for setting up basic functionalities (such as the stack) before loading and executing the **kernel**.
+The BIOS then loads and executes the **bootloader** (placed in the boot sector of the disk image), a piece of software that is part of the OS and which is responsible for setting up basic functionalities (such as the stack) before loading and executing the **kernel**.
 
 The kernel is the root program of the OS that loads and executes all other programs, manages their resources (memory allocations, file pointers), and connects software and hardware (I/O, peripherals/device drivers). The kernel processes **system calls** that request hardware-specific operations so that software may remain hardware-agnostic. For example, the implementation of `scanf()` from `<stdio.h>` involves system calls to the kernel, such that software executing `scanf()` need not consider what devices are sending data to `stdin` or how, only that data _is_ being sent.
