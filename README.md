@@ -1,6 +1,6 @@
 # GamernyanOS (stupid working title)
 
-atmega328p doesn't have a BIOS (all the hardware connection stuff is handled by the bootloader, which comes with the board but is modifiable, unlike a BIOS).
+atmega328p doesn't have a BIOS (all the hardware connection stuff is handled by the bootloader (like [Optiboot](https://github.com/Optiboot/optiboot)), which comes with the board but is modifiable, unlike a BIOS).
 
 might look into [Microchip Studio](https://www.microchip.com/en-us/tools-resources/develop/microchip-studio) for AVR emulation given the limitations QEMU has with AVR
 
@@ -19,9 +19,9 @@ bootloader (written in assembly then assembled to a .bin binary file) + executab
 
 ### Prerequisites
 
-- `brew install binutils` for `objcopy` which can turn .elf to .bin
-
 - `brew tap osx-cross/avr && brew install avr-gcc` | Installs the `avr-gcc` compiler used to compile C for AVR architectures.
+
+- `brew install binutils && export PATH="/usr/local/opt/binutils/bin:$PATH"` | For `objcopy` which can turn .elf to .bin
 
 - `brew install qemu` | Installs the [QEMU](https://www.qemu.org/) emulator (which also provides disk image utilities?).
 
