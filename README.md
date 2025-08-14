@@ -1,5 +1,7 @@
 # GamernyanOS (stupid working title)
 
+atmega328p doesn't have a BIOS (all the hardware connection stuff is handled by the bootloader, which comes with the board but is modifiable, unlike a BIOS).
+
 either I make:
 - the lamest general purpose OS imagineable
 - a console's OS like the software you'd find loaded on a [3DS](https://en.wikipedia.org/wiki/Nintendo_3DS_system_software) or whatever
@@ -25,17 +27,26 @@ bootloader (written in assembly then assembled to a .bin binary file) + executab
 
 1. write bootloader in AVR assembly and assemble to a binary
 
-`avr-gcc -mmcu=atmega328p -Os -c bootloader.S -o bootloader.elf`
+```
+avr-gcc -mmcu=atmega328p -Os -c bootloader.S -o bootloader.elf
+arm-none-eabi-objcopy -O binary bootloader.elf bootloader.bin -I elf32-littlearm
+```
 
-`avr-objcopy -O ihex bootloader.elf bootloader.hex` or `arm-none-eabi-objcopy -O binary bootloader.elf bootloader.bin -I elf32-littlearm` idk
+2. Boot in `atmega328p` virtual environment (`atmega328p` is aliased as `uno`). Use control+option+2 to switch to serial view.
+
+```
+qemu-system-avr -machine uno -bios bootloader.bin
+```
+
+---
+
+idk if we can create a disk image, aka combine our above bootloader with a kernel script or smth
 
 2. `qemu-img create -f raw hard_disk_drive.img 10M` create disk image
 
 3. `dd if=bootloader.bin of=hard_disk_drive.img bs=512 count=1 conv=notrunc` copy your bootloader binary to the beginning (the boot sector, which is the first 512 bytes) of your disk image
 
-4. `qemu-system-avr -machine uno -drive file=hard_disk_drive.img,format=raw` run machine using `hard_disk_drive.img` as backing file (snapshot to load virtual drive from)
-
-Use control+option+2 to switch to serial view. I think `qemu-system-avr -machine uno -cdrom hard_disk_drive.img` works also but might have differences idk!! run in `atmega328p` virtual environment (`atmega328p` is aliased as `uno`).
+4. `qemu-system-avr -machine uno -drive file=hard_disk_drive.img,format=raw` run machine using `hard_disk_drive.img` as backing file (snapshot to load virtual drive from). I think `qemu-system-avr -machine uno -cdrom hard_disk_drive.img` works also but might have differences idk!!
 
 ## Notes
 
