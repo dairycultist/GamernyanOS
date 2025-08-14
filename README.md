@@ -29,7 +29,7 @@ I want
 
 ```
 avr-gcc -mmcu=atmega328p -Os -c bootloader.S -o bootloader.elf
-arm-none-eabi-objcopy -O binary bootloader.elf bootloader.bin -I elf32-littlearm
+objcopy -O binary bootloader.elf bootloader.bin
 ```
 
 2. Boot in `atmega328p` virtual environment (`atmega328p` is aliased as `uno`). Use control+option+2 to switch to serial view.
