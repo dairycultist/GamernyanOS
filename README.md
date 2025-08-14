@@ -38,7 +38,7 @@ avr-gcc -mmcu=atmega328p -Os -c bootloader.S -o bootloader.elf
 objcopy -O binary bootloader.elf bootloader.bin
 ```
 
-(TODO Create a disk image to act as our SD card. Then load the kernel onto it.)
+(TODO Create a disk image to act as our flash memory or SD card. Then load the kernel onto it.)
 
 2. Boot in `atmega328p` virtual environment (`atmega328p` is aliased as `uno`). Use `control+option+2` to switch to serial view (optionally, instead add `-display none -serial stdio` to pipe serial output to the console).
 
