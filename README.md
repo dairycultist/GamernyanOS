@@ -21,22 +21,10 @@ bootloader (written in assembly then assembled to a .bin binary file) + executab
 
 - `brew install qemu` | Installs the [QEMU](https://www.qemu.org/) emulator, which also provides disk image utilities.
 
-### Compiling and running
-
-1. Compile C code to AVR assembly. `-Os` tells the compiler to optimize for code size.
-
-```
-avr-gcc -mmcu=atmega328p -Os -o main.elf main.c
-```
-
-2. Run `test.elf` in a virtual environment (not using `-nographic` because then you can't terminate the session for some reason).
-
-```
-qemu-system-avr -bios main.elf -display none -serial stdio
-```
+### Creating and booting the disk image
 
 > [!TIP]
-> Run `qemu-system-avr -machine help` to see QEMU-provided machines that run AVR architecture (`atmega328p` is aliased as `uno`).
+> Run `qemu-system-arm -machine help` to see QEMU-provided machines that implement ARM architecture.
 
 ## Notes
 
