@@ -38,6 +38,8 @@ objcopy -O binary bootloader.elf bootloader.bin
 qemu-system-avr -machine uno -bios bootloader.bin
 ```
 
+Optionally add `-display none -serial stdio` to pipe serial output to console.
+
 ---
 
 idk if we can create a disk image, aka combine our above bootloader with a kernel script or smth
