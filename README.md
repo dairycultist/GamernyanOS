@@ -9,6 +9,7 @@ I should look into the ARM architecture
 I want
 - I/O (hardware serial connection with UART?)
 - Non-volatile storage
+- something something 512kb
 
 ## Run
 
