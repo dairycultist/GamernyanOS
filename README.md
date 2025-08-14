@@ -25,20 +25,18 @@ bootloader (written in assembly then assembled to a .bin binary file) + executab
 
 ### Creating and booting the disk image
 
-mkisofs -o arch.iso ArchLinuxARM-rpi-armv7-latest
-
-### Compiling and running
-
 1. Compile C code to AVR assembly. `-Os` tells the compiler to optimize for code size.
 
 ```
 avr-gcc -mmcu=atmega328p -Os -o main.elf main.c
 ```
 
-2. Run `test.elf` in a `atmega328p` virtual environment (`atmega328p` is aliased as `uno`) (not using `-nographic` because then you can't terminate the session for some reason).
+2. `mkisofs -o os.iso PATH`
+
+3. Run your iso image in a `atmega328p` virtual environment (`atmega328p` is aliased as `uno`) (not using `-nographic` because then you can't terminate the session for some reason).
 
 ```
-qemu-system-avr -machine uno -bios main.elf -display none -serial stdio
+qemu-system-avr -machine uno -cdrom os.iso -display none -serial stdio
 ```
 
 ## Notes
