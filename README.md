@@ -13,7 +13,7 @@ I want
 
 ## Run
 
-bootloader (written in assembly) + executable kernel software (compiled from C to .elf) + disk image creation software = disk image (.iso)
+bootloader (written in assembly then assembled to a .bin binary file) + executable kernel software (compiled from C to .elf then assembled to a .bin binary file) + disk image creation software = optical disk image (.iso)
 
 ### Prerequisites
 
