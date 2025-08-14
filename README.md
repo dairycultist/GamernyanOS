@@ -9,9 +9,11 @@ I want
 - Non-volatile storage
 - something something 512kb
 
-## Run
+## Background
 
-atmega328p doesn't have a BIOS (all the hardware connection stuff is handled by a bootloader like [Optiboot](https://github.com/Optiboot/optiboot), one of which comes with the board but is modifiable, unlike a BIOS).
+`atmega328p` doesn't have a BIOS (all the hardware connection stuff is handled by a bootloader like [Optiboot](https://github.com/Optiboot/optiboot), one of which comes with the board but is modifiable, unlike a BIOS). The -bios argument is used to pass our bootloader to QEMU, loading first and initializing the hardware before locating and loading the operating system from a storage device, (as would a traditional BIOS).
+
+## Run
 
 might look into [Microchip Studio](https://www.microchip.com/en-us/tools-resources/develop/microchip-studio) for AVR emulation given the limitations QEMU has with AVR
 
@@ -42,7 +44,7 @@ qemu-system-avr -machine uno -bios bootloader.bin
 
 Optionally add `-display none -serial stdio` to pipe serial output to console.
 
-(todo add kernel software written in C. The -bios argument is used to load a custom BIOS or firmware image. This image is the first code to run and is responsible for initializing the hardware and then locating and loading the operating system from a storage device, just like a real computer's BIOS.)
+(todo add kernel software written in C.)
 
 ## Notes
 
