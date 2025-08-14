@@ -17,11 +17,13 @@ I want
 
 ### Prerequisites
 
-- `brew tap osx-cross/avr && brew install avr-gcc` | Installs the `avr-gcc` compiler used to compile C for AVR architectures.
+Install `avr-gcc` (compiler used to compile C for AVR architectures), `objcopy` (for converting .elf to .bin), and [QEMU](https://www.qemu.org/) (an emulator which also provides disk image utilities).
 
-- `brew install binutils && export PATH="/usr/local/opt/binutils/bin:$PATH"` | For `objcopy` which can turn .elf to .bin
-
-- `brew install qemu` | Installs the [QEMU](https://www.qemu.org/) emulator (which also provides disk image utilities?).
+```
+brew tap osx-cross/avr && brew install avr-gcc
+brew install binutils && export PATH="/usr/local/opt/binutils/bin:$PATH"
+brew install qemu
+```
 
 ### Creating and booting the disk image
 
