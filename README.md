@@ -1,10 +1,10 @@
 # GamernyanOS (stupid working title)
 
+AVR architecture
+
 either I make:
 - the lamest general purpose OS imagineable
 - a console's OS like the software you'd find loaded on a [3DS](https://en.wikipedia.org/wiki/Nintendo_3DS_system_software) or whatever
-
-I should look into the 32-bit ARM architecture
 
 I want
 - I/O (hardware serial connection with UART?)
@@ -27,8 +27,19 @@ bootloader (written in assembly then assembled to a .bin binary file) + executab
 
 mkisofs -o arch.iso ArchLinuxARM-rpi-armv7-latest
 
-> [!TIP]
-> Run `qemu-system-arm -machine help` to see QEMU-provided machines that implement ARM architecture.
+### Compiling and running
+
+1. Compile C code to AVR assembly. `-Os` tells the compiler to optimize for code size.
+
+```
+avr-gcc -mmcu=atmega328p -Os -o main.elf main.c
+```
+
+2. Run `test.elf` in a `atmega328p` virtual environment (`atmega328p` is aliased as `uno`) (not using `-nographic` because then you can't terminate the session for some reason).
+
+```
+qemu-system-avr -machine uno -bios main.elf -display none -serial stdio
+```
 
 ## Notes
 
