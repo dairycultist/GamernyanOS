@@ -40,11 +40,9 @@ qemu-system-avr -machine uno -bios bootloader.bin
 
 Optionally add `-display none -serial stdio` to pipe serial output to console.
 
----
+## Notes
 
-idk if we can create a disk image, aka combine our above bootloader with a kernel script or smth
-
-bootloader (written in assembly then assembled to a .bin binary file) + executable kernel software (compiled from C to .elf then assembled to a .bin binary file) + disk image creation software = optical disk image (.iso)
+ideally we'd create a disk image, aka combine our above bootloader (written in assembly then assembled to a .bin binary file) with an executable kernel software (compiled from C to .elf then assembled to a .bin binary file) into one disk image file (optical .iso or floppy .img or something). disk image creation software
 
 2. `qemu-img create -f raw hard_disk_drive.img 10M` create disk image
 
@@ -52,7 +50,7 @@ bootloader (written in assembly then assembled to a .bin binary file) + executab
 
 4. `qemu-system-avr -machine uno -drive file=hard_disk_drive.img,format=raw` run machine using `hard_disk_drive.img` as backing file (snapshot to load virtual drive from). I think `qemu-system-avr -machine uno -cdrom hard_disk_drive.img` works also but might have differences idk!!
 
-## Notes
+---
 
 SD cards are block-addressed, meaning data is written and read in fixed-size blocks (typically 512 bytes), as opposed to arbitrary addresses. You must send specific commands to the SD card to initialize it, select the desired block address, and then send the data for writing. These commands are part of the SD card's SPI or SDIO interface protocol. This is __raw data__, any filesystem implementation (for creating and locating allocations) must be done yourself
 
