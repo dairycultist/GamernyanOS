@@ -11,7 +11,7 @@ I want
 
 ## Background
 
-`atmega328p` doesn't have a BIOS -- all the hardware initialization is instead handled by the bootloader (such as [Optiboot](https://github.com/Optiboot/optiboot)). While an Arduino board does come prepackaged with a bootloader (like a BIOS would), it is modifiable, unlike a BIOS. The `-bios` argument is used to pass our bootloader to QEMU, loading first and initializing the hardware before locating and loading the operating system from a storage device, (as would a traditional BIOS).
+`atmega328p` doesn't have a BIOS; instead, all the hardware initialization is handled by the bootloader (such as [Optiboot](https://github.com/Optiboot/optiboot)). While an Arduino board does come prepackaged with a bootloader (like a BIOS would), it is modifiable, unlike a BIOS. The `-bios` argument is used to pass our bootloader to QEMU, loading first and initializing the hardware before locating and loading the operating system from a storage device (as would a traditional BIOS).
 
 ## Run
 
