@@ -13,7 +13,7 @@ I want
 
 `atmega328p` doesn't have a BIOS; instead, all the hardware initialization is handled by the bootloader (such as [Optiboot](https://github.com/Optiboot/optiboot)). While an Arduino board does come prepackaged with a bootloader (like a BIOS would), it is modifiable, unlike a BIOS. The `-bios` argument is used to pass our bootloader to QEMU to be loaded at machine start, initializing the hardware before locating and loading the operating system kernel from a storage device.
 
-I'm gonna steal Optiboot for now so I can focus on testing a kernel software written in C, writing my own bootloader in ASM later.
+I'm gonna steal Optiboot for now so I can focus on testing a kernel software written in C, writing my own bootloader in AVR assembly later.
 
 ## Run
 
@@ -29,22 +29,20 @@ brew install binutils && export PATH="/usr/local/opt/binutils/bin:$PATH"
 brew install qemu
 ```
 
-### Creating and booting the disk image
+### Emulating
 
-1. write bootloader in AVR assembly and assemble to a binary
+1. Assemble `bootloader.S` to a binary.
 
 ```
 avr-gcc -mmcu=atmega328p -Os -c bootloader.S -o bootloader.elf
 objcopy -O binary bootloader.elf bootloader.bin
 ```
 
-2. Boot in `atmega328p` virtual environment (`atmega328p` is aliased as `uno`). Use control+option+2 to switch to serial view.
+2. Boot in `atmega328p` virtual environment (`atmega328p` is aliased as `uno`). Use `control+option+2` to switch to serial view (optionally, instead add `-display none -serial stdio` to pipe serial output to the console).
 
 ```
 qemu-system-avr -machine uno -bios bootloader.bin
 ```
-
-Optionally add `-display none -serial stdio` to pipe serial output to console.
 
 ## Notes
 
