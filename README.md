@@ -1,9 +1,5 @@
 # GamernyanOS (stupid working title)
 
-atmega328p doesn't have a BIOS (all the hardware connection stuff is handled by the bootloader (like [Optiboot](https://github.com/Optiboot/optiboot)), which comes with the board but is modifiable, unlike a BIOS).
-
-might look into [Microchip Studio](https://www.microchip.com/en-us/tools-resources/develop/microchip-studio) for AVR emulation given the limitations QEMU has with AVR
-
 either I make:
 - the lamest general purpose OS imagineable
 - a console's OS like the software you'd find loaded on a [3DS](https://en.wikipedia.org/wiki/Nintendo_3DS_system_software) or whatever
@@ -14,6 +10,10 @@ I want
 - something something 512kb
 
 ## Run
+
+atmega328p doesn't have a BIOS (all the hardware connection stuff is handled by the bootloader (like [Optiboot](https://github.com/Optiboot/optiboot)), which comes with the board but is modifiable, unlike a BIOS).
+
+might look into [Microchip Studio](https://www.microchip.com/en-us/tools-resources/develop/microchip-studio) for AVR emulation given the limitations QEMU has with AVR
 
 ### Prerequisites
 
