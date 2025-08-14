@@ -42,7 +42,7 @@ qemu-system-avr -machine uno -bios bootloader.bin
 
 Optionally add `-display none -serial stdio` to pipe serial output to console.
 
-(todo add kernel software written in C, I think -kernel is a command)
+(todo add kernel software written in C. The -bios argument is used to load a custom BIOS or firmware image. This image is the first code to run and is responsible for initializing the hardware and then locating and loading the operating system from a storage device, just like a real computer's BIOS.)
 
 ## Notes
 
