@@ -25,26 +25,7 @@ bootloader (written in assembly then assembled to a .bin binary file) + executab
 
 ### Creating and booting the disk image
 
-1. Compile C code to AVR assembly. `-Os` tells the compiler to optimize for code size.
-
-```
-avr-gcc -mmcu=atmega328p -Os -o bootloader.elf main.c
-```
-
-2. `arm-none-eabi-objcopy -O binary bootloader.elf bootloader.bin -I elf32-littlearm`
-
-3. `mkisofs -o os.iso PATH`
-
-4. Run your iso image in a `atmega328p` virtual environment (`atmega328p` is aliased as `uno`).
-
-```
-qemu-system-avr -machine uno -cdrom os.iso
-```
-
-
----
-
-1. write bootloader in assembly and assemble to a binary
+1. write bootloader in AVR assembly and assemble to a binary `avr-gcc -mmcu=atmega328p -Os -o bootloader.elf main.c`????? ``arm-none-eabi-objcopy -O binary bootloader.elf bootloader.bin -I elf32-littlearm``
 
 2. `qemu-img create -f raw hard_disk_drive.img 10M` create disk image
 
@@ -52,7 +33,7 @@ qemu-system-avr -machine uno -cdrom os.iso
 
 4. `qemu-system-avr -machine uno -drive file=hard_disk_drive.img,format=raw` run machine using `hard_disk_drive.img` as backing file (snapshot to load virtual drive from)
 
-Use control+option+2 to switch to serial view. I think `qemu-system-avr -machine uno -cdrom hard_disk_drive.img` works also but might have differences idk!!
+Use control+option+2 to switch to serial view. I think `qemu-system-avr -machine uno -cdrom hard_disk_drive.img` works also but might have differences idk!! run in `atmega328p` virtual environment (`atmega328p` is aliased as `uno`).
 
 ## Notes
 
