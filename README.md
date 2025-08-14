@@ -43,6 +43,13 @@ qemu-system-avr -machine uno -cdrom os.iso
 
 Use control+option+2 to switch to serial view.
 
+
+---
+
+`qemu-img create -f raw hard_disk_drive.img 10M`
+
+`qemu-system-avr -machine uno -drive file=hard_disk_drive.img,format=raw` run machine using `hard_disk_drive.img` as backing file (snapshot to load virtual drive from)
+
 ## Notes
 
 SD cards are block-addressed, meaning data is written and read in fixed-size blocks (typically 512 bytes), as opposed to arbitrary addresses. You must send specific commands to the SD card to initialize it, select the desired block address, and then send the data for writing. These commands are part of the SD card's SPI or SDIO interface protocol. This is __raw data__, any filesystem implementation (for creating and locating allocations) must be done yourself
