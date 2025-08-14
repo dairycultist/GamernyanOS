@@ -46,7 +46,9 @@ Use control+option+2 to switch to serial view.
 
 ---
 
-`qemu-img create -f raw hard_disk_drive.img 10M`
+`qemu-img create -f raw hard_disk_drive.img 10M` create disk image
+
+`dd if=bootloader.bin of=hard_disk_drive.img bs=512 count=1 conv=notrunc` copy your bootloader binary to the beginning (the boot sector, which is the first 512 bytes) of your disk image
 
 `qemu-system-avr -machine uno -drive file=hard_disk_drive.img,format=raw` run machine using `hard_disk_drive.img` as backing file (snapshot to load virtual drive from)
 
