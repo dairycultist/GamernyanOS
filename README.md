@@ -11,7 +11,9 @@ I want
 
 ## Background
 
-`atmega328p` doesn't have a BIOS; instead, all the hardware initialization is handled by the bootloader (such as [Optiboot](https://github.com/Optiboot/optiboot)). While an Arduino board does come prepackaged with a bootloader (like a BIOS would), it is modifiable, unlike a BIOS. The `-bios` argument is used to pass our bootloader to QEMU, loading first and initializing the hardware before locating and loading the operating system from a storage device (as would a traditional BIOS).
+`atmega328p` doesn't have a BIOS; instead, all the hardware initialization is handled by the bootloader (such as [Optiboot](https://github.com/Optiboot/optiboot)). While an Arduino board does come prepackaged with a bootloader (like a BIOS would), it is modifiable, unlike a BIOS. The `-bios` argument is used to pass our bootloader to QEMU to be loaded at machine start, initializing the hardware before locating and loading the operating system kernel from a storage device.
+
+I'm gonna steal Optiboot for now so I can focus on testing a kernel software written in C, writing my own bootloader in ASM later.
 
 ## Run
 
@@ -43,8 +45,6 @@ qemu-system-avr -machine uno -bios bootloader.bin
 ```
 
 Optionally add `-display none -serial stdio` to pipe serial output to console.
-
-(todo add kernel software written in C.)
 
 ## Notes
 
