@@ -35,11 +35,13 @@ avr-gcc -mmcu=atmega328p -Os -o bootloader.elf main.c
 
 3. `mkisofs -o os.iso PATH`
 
-4. Run your iso image in a `atmega328p` virtual environment (`atmega328p` is aliased as `uno`) (not using `-nographic` because then you can't terminate the session for some reason).
+4. Run your iso image in a `atmega328p` virtual environment (`atmega328p` is aliased as `uno`).
 
 ```
-qemu-system-avr -machine uno -cdrom os.iso -display none -serial stdio
+qemu-system-avr -machine uno -cdrom os.iso
 ```
+
+Use control+option+2 to switch to serial view.
 
 ## Notes
 
