@@ -19,7 +19,7 @@ bootloader (written in assembly then assembled to a .bin binary file) + executab
 
 - `brew install --cask gcc-arm-embedded` | Installs the `arm-none-eabi-gcc` compiler used to compile C for an ARM architecture.
 
-- `brew install cdrtools` | Installs the `mkisofs` tool for creating .iso disk images from a local filesystem.
+- install `avr-gcc` idk if I'm using avr or arm yet
 
 - `brew install qemu` | Installs the [QEMU](https://www.qemu.org/) emulator (which also provides disk image utilities?).
 
