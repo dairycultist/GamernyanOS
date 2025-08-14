@@ -4,7 +4,7 @@ either I make:
 - the lamest general purpose OS imagineable
 - a console's OS like the software you'd find loaded on a [3DS](https://en.wikipedia.org/wiki/Nintendo_3DS_system_software) or whatever
 
-I should look into the ARM architecture
+I should look into the 32-bit ARM architecture
 
 I want
 - I/O (hardware serial connection with UART?)
@@ -15,10 +15,10 @@ I want
 
 ### Prerequisites
 
-Install AVR-GCC and [QEMU](https://www.qemu.org/) emulator (will look into [Microchip Studio](https://www.microchip.com/en-us/tools-resources/develop/microchip-studio) for AVR emulation given the limitations QEMU has with AVR).
+Install `arm-none-eabi-gcc` compiler and [QEMU](https://www.qemu.org/) emulator.
 
 ```
-brew tap osx-cross/avr && brew install avr-gcc
+brew install --cask gcc-arm-embedded
 brew install qemu
 ```
 
