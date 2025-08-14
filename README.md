@@ -23,7 +23,11 @@ bootloader (written in assembly then assembled to a .bin binary file) + executab
 
 ### Creating and booting the disk image
 
-1. write bootloader in AVR assembly and assemble to a binary `avr-gcc -mmcu=atmega328p -Os -o bootloader.elf main.c`????? ``arm-none-eabi-objcopy -O binary bootloader.elf bootloader.bin -I elf32-littlearm``
+1. write bootloader in AVR assembly and assemble to a binary
+
+`avr-gcc -mmcu=atmega328p -Os -c bootloader.S -o bootloader.elf`
+
+`avr-objcopy -O ihex bootloader.elf bootloader.hex` or `arm-none-eabi-objcopy -O binary bootloader.elf bootloader.bin -I elf32-littlearm` idk
 
 2. `qemu-img create -f raw hard_disk_drive.img 10M` create disk image
 
