@@ -1,8 +1,16 @@
 # GamernyanOS (stupid working title)
 
-either I make:
-- the lamest general purpose OS imagineable
-- a console's OS like the software you'd find loaded on a [3DS](https://en.wikipedia.org/wiki/Nintendo_3DS_system_software) or whatever
+Bare-bones operating system (with security/good practices in mind? a clear thread-model.txt?)
+
+```
+Welcome to TinyOS 0.1 (ARM)
+
+ * Source code: https://github.com/dairycultist/GamernyanOS
+
+user:~$
+```
+
+the lamest general purpose OS imagineable
 
 I want
 - I/O (hardware serial connection with UART?)
@@ -47,6 +55,8 @@ qemu-system-avr -machine uno -bios bootloader.bin
 ```
 
 ## Notes
+
+https://en.wikipedia.org/wiki/Nintendo_3DS_system_software
 
 `qemu-img create -f raw hard_disk_drive.img 10M` create disk image
 
