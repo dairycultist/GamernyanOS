@@ -1,6 +1,6 @@
 # GamernyanOS (stupid working title)
 
-Bare-bones operating system (with security/good practices in mind? a clear thread-model.txt?)
+Bare-bones open-source operating system for \[XYZ hardware].
 
 ```
 Welcome to TinyOS 0.1 (ARM)
@@ -12,11 +12,13 @@ user:~$
 
 the lamest general purpose OS imagineable
 
-I want
-- I/O (hardware serial connection with UART?)
+I want these features
+- I/O (hardware serial connection with UART)
+- A shell
 - Non-volatile storage
-- something something 512kb
-- ability to execute and sandbox external binaries
+- Something something 512kb
+- Ability to execute and sandbox external binaries
+- security/good practices in mind + a clear thread-model.txt
 
 ## Background
 
