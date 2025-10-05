@@ -16,6 +16,7 @@ I want
 - I/O (hardware serial connection with UART?)
 - Non-volatile storage
 - something something 512kb
+- ability to execute and sandbox external binaries
 
 ## Background
 
