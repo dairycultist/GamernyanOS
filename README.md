@@ -1,5 +1,15 @@
 # GamernyanOS (stupid working title)
 
+I could make a 64-bit OS or smth. It’s just an iso image “run code on computer launch” lol how bad could it be (I just need to implement a filesystem and let out of house (C based) apps run bruh ez) WHAT’S AN ARCHITECTURE!!!!
+
+[This OS is less than 1KB in size](https://www.youtube.com/watch?v=qaI0WvgTNCc)
+
+System files (and folders) :D
+
+![](https://i.ytimg.com/vi/bbmWOjuFmgA/hq720.jpg?sqp=-oaymwEhCK4FEIIDSFryq4qpAxMIARUAAAAAGAElAADIQj0AgKJD&rs=AOn4CLCdr7iKZ4lakBzF5OGkBXExS4D1jw)
+
+---
+
 Bare-bones open-source operating system for \[XYZ hardware].
 
 ```
